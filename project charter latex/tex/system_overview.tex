@@ -1,1 +1,9 @@
-Explain, at a high level, how you will implement a solution to the problem. Include a diagram of major components to the system (not a full architectural design, but a high level overview of the major system components and how a user or external system might interface). Avoid specific implementation details (operating system, programming languages, etc.). This section should occupy at least 1 full page.
+The alert notifier module connects to a server which will connect your phone. Your phone connects then connects to the wrist module via Bluetooth and sends the alert.
+
+At a high level, our wrist module will receive notifications via Bluetooth, and alert the wearer via vibration as to what had occurred. Different vibration patterns will be allowed to signal the type of occurrence.
+\newline
+\begin{figure}[h!]
+	\centering
+   	\includegraphics[width=0.95\textwidth]{project charter latex/images/high-level-system-overview.png}
+   	\caption{Vibration Notification System Overview}
+\end{figure}
