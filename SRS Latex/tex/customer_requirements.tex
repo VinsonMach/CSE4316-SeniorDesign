@@ -1,0 +1,227 @@
+%Include a header paragraph specific to your product here. Customer requirements are those required features and functions specified for and by the intended audience for this product. This section establishes, clearly and concisely, the "look and feel" of the product, what each potential end-user should expect the product do and/or not do. Each requirement specified in this section is associated with a specific customer need that will be satisfied. In general Customer Requirements are the directly observable features and functions of the product that will be encountered by its users. Requirements specified in this section are created with, and must not be changed without, specific agreement of the intended customer/user/sponsor.
+The Cerberus wristband will notify the wearer of any events from the Ring system. The band will vibrate on the wearer's wrist to signal them to check their phone for the notifications from their Ring system. The notifications will be sent through the Cerberus app. Customers will need to create an account through our Cerberus app in order to use the system. 
+
+%\subsection{Requirement Name}
+%\subsubsection{Description}
+%A detailed description of the feature/function that satisfies the requirement. For example: \textit{The GUI background will be slate blue. This specific color is required in order to ensure that the GUI matches other similar software products offered by the customer. Slate blue is specified as \#007FFF, using six-digit hexadecimal color specification.} It is acceptable and advisable to include drawings/graphics in the description if it aids understanding of the requirement.
+%\subsubsection{Source}
+%The source of the requirement (e.g. customer, sponsor, specified team member (by name), federal regulation, local laws, CSE Senior Design project specifications, etc.)
+%\subsubsection{Constraints}
+%A detailed description of realistic constraints relevant to this requirement. Economic, environmental, social, political, ethical, health \& safety, manufacturability, and sustainability should be discussed as appropriate.
+%\subsubsection{Standards}
+%A detailed description of any specific standards that apply to this requirement (e.g. \textit{NSTM standard xx.xxx.x. color specifications \cite{Rubin2012}}. Standards exist for practically everything (ATC standard fuses, IEEE 802.15.4 embedded wireless, TLS 1.3 encryption, etc.), so be sure that you research and document which ones will be followed in meeting this requirement.
+%\subsubsection{Priority}
+%The priority of this requirement relative to other specified requirements. Use the following priorities:
+%\begin{itemize}
+%\item Critical (must have or product is a failure)
+%\item High (very important to customer acceptance, desirability)
+%\item Moderate (should have for proper product functionality);
+%\item Low (nice to have, will include if time/resource permits)
+%\item Future (not feasible in this version of the product, but should be considered for a future release).
+%\end{itemize}
+
+\iffalse
+\subsection{Requirement Name}
+\subsubsection{Description}
+Detailed requirement description...
+\subsubsection{Source}
+Source
+\subsubsection{Constraints}
+Detailed description of applicable constraints...
+\subsubsection{Standards}
+List of applicable standards
+\subsubsection{Priority}
+Priority
+\fi
+ % REQUIREMENT 1.1
+\subsection{Wristband vibrates on event occurrence}
+\subsubsection{Description}
+When the Ring System is triggered, like the doorbell is rung or the motion sensor is set off, The wrist band will vibrate with minimal delay. This is to notify the wearer of an event that has occurred with their ring system. The vibration must be strong enough for the user to be able to easily feel it, but not too strong where it may cause discomfort to the wearer.  
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+Customer must be wearing the wristband to feel the vibrations.
+The wristband must be properly connected to the Ring system. Wristband's vibrations must be strong enough to be felt by the wearer.
+\subsubsection{Priority}
+Critical
+
+% REQUIREMENT 1.2
+\subsection{Wristband has different vibration patterns for different events}
+\subsubsection{Description}
+The wristband will be able vibrate at different patterns to differentiate between events. Patterns will be different enough from each other in order to not confuse the wearer.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+Customer must be wearing the wristband to feel the vibrations.
+The wristband must be properly connected to the Ring system. Wristband's vibrations must be strong enough to be felt by the wearer.
+\subsubsection{Priority}
+Low
+
+% REQUIREMENT 1.5
+\subsection{Wristband vibrates on door open}
+\subsubsection{Description}
+When a door in the Ring System causes the door sensor to trigger, the wristband vibrates according to the set vibration pattern, notifying the wearer of the event.
+\subsubsection{Source}
+This requirement meets our sponsor's needs.
+\subsubsection{Constraints}
+Customer must be wearing the wristband to feel the vibrations.
+The wristband must be properly connected to sensor that notifies door open. Wristband's vibrations must be strong enough to be felt by the wearer.
+\subsubsection{Priority}
+Low
+
+% REQUIREMENT 1.4
+\subsection{Wristband vibrates on window open}
+\subsubsection{Description}
+When a window in the Ring System causes the window sensor to trigger, the wristband vibrates according to the set vibration pattern, notifying the wearer of the event.
+\subsubsection{Source}
+This requirement meets our sponsor's needs.
+\subsubsection{Constraints}
+Customer must be wearing the wristband to feel the vibrations.
+The wristband must be properly connected to sensor that notifies window open. Wristband's vibrations must be strong enough to be felt by the wearer.
+\subsubsection{Priority}
+Low
+
+% REQUIREMENT 1.6
+\subsection{Wristband vibrates on fire alarm going off}
+\subsubsection{Description}
+When a fire alarm in the Ring System goes off, the wristband vibrates according to the set vibration pattern, notifying the wearer of the event.
+\subsubsection{Source}
+This requirement meets our sponsor's needs.
+\subsubsection{Constraints}
+Customer must be wearing the wristband to feel the vibrations.
+The wristband must be properly connected to sensor that notifies fire alarm going off. Wristband's vibrations must be strong enough to be felt by the wearer.
+\subsubsection{Priority}
+Considered a future requirement.
+
+% REQUIREMENT 1.7
+\subsection{Wristband lights up based on sound level}
+\subsubsection{Description}
+The LED's on the wristband will light up green, yellow, or red based on the decibels of the area surrounding the user.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+The wristband must have a sound sensor that is properly calibrated. The LED's on the wristband must properly react to the various decibel levels.
+\subsubsection{Priority}
+Low
+
+% REQUIREMENT 1.8
+\subsection{Wristband is connected to phone over Bluetooth or WiFi}
+\subsubsection{Description}
+The wristband will be able to connect to the user's phone over Bluetooth or WiFi.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+The wristband must have a Bluetooth module. The wristband must have a WiFi module. The wristband and the user's phone must be on a WiFi/internet network. The user's phone must have the Cerberus application corresponding to the wristband on their phone. 
+\subsubsection{Priority}
+Critical 
+
+% REQUIREMENT 2.1
+\subsection{Application connects to internet}
+\subsubsection{Description}
+The application on the user's phone that corresponds to the wristband will connect to the user's internet network. The application will communicate with the Ring Base station and the wristband over WiFi.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+The user's phone must be connected to the internet. The wristband needs to have a WiFi module. The user needs to have the application downloaded on their phone. 
+\subsubsection{Priority}
+High
+
+% REQUIREMENT 2.2
+\subsection{Doorbell sends vibration signal over WiFi when Bluetooth is out of range}
+\subsubsection{Description}
+The doorbell unit will send the wristband a vibration signal over the internet when the user is out of the Bluetooth range of the Ring Base station. 
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+The wristband must have a Bluetooth sensor that is properly calibrated. The user's phone must have the application downloaded on their phone. The wristband must be connected to the application. The user's phone must have a connection to the internet. The user's phone must have Bluetooth enabled. 
+\subsubsection{Priority}
+Considered a future requirement.
+
+%Requirement 2.6
+\subsection{Set notification settings with the app}
+\subsubsection{Description}
+The user should be able to change the notification settings of the wristband on the companion app.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+User has to have a Bluetooth connection to the wristband. The user must also have the app installed to their mobile device.
+\subsubsection{Priority}
+Medium
+
+%Requirement 2.9
+\subsection{App available for IOS}
+\subsubsection{Description}
+The app will be available for users with an IOS device
+\subsubsection{Source}
+This requirement meets the customers' needs
+\subsubsection{Constraints}
+The user must have an IOS device. The IOS version must be the most recent release 
+\subsubsection{Priority}
+Considered a future requirement.
+
+%Requirement 2.3
+\subsection{App may silence notification}
+\subsubsection{Description}
+The app will be available for users to silence notification.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+User has to have a Bluetooth connection to the wristband. The user must also have the app installed to their mobile device.
+\subsubsection{Priority}
+Low
+
+%Requirement 2.4
+\subsection{App tells which window/door is open}
+\subsubsection{Description}
+The app will tell users which window or door is open. 
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+User has to have a Bluetooth connection to the wristband. The user must also have the app installed to their mobile device. Each window and door must be specified.
+\subsubsection{Priority}
+Low
+
+%Requirement 2.6
+\subsection{May set different/custom vibration settings with app}
+\subsubsection{Description}
+The app will allow users to set different or custom vibration settings.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+User has to have a Bluetooth connection to the wristband. The user must also have the app installed to their mobile device.
+\subsubsection{Priority}
+Low
+
+%Requirement 2.7
+\subsection{Users must register an account with the application}
+\subsubsection{Description}
+The app will require each user to have an account for their phone to wristband settings. Users must enter their email, create a password, and enter their security question.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+User has to have a Bluetooth connection to the wristband. The user must also have the app installed to their mobile device.
+\subsubsection{Priority}
+High
+
+%Requirement 2.8
+\subsection{Users must log in on the app}
+\subsubsection{Description}
+The app will require each user to log into their account for their personal settings. Users must enter their email, password, to log in.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+User has to have a Bluetooth connection to the wristband. The user must also have the app installed to their mobile device.
+\subsubsection{Priority}
+High
+
+
+%Requirement 2.8
+\subsection{Users must be able to recover their password}
+\subsubsection{Description}
+If a user forgets their password, they will be able to get their password back.
+\subsubsection{Source}
+This requirement meets the customers' needs.
+\subsubsection{Constraints}
+User has to have a Bluetooth connection to the wristband. The user must also have the app installed to their mobile device.
+\subsubsection{Priority}
+low
