@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This layout is the item for the recyclers. Displaying item logo, Date and time  -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/box_item"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/mode_image"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="@string/M"
+        android:src="@drawable/ic_baseline_not_interested_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@+id/mode_image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventDate"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/green_pure"
+            android:paddingTop="8dp"
+            app:layout_constraintEnd_toEndOf="@id/box_item"
+            app:layout_constraintStart_toEndOf="@+id/mode_image"
+            app:layout_constraintTop_toTopOf="@id/box_item"
+            app:layout_constraintBottom_toTopOf="@id/eventTime"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/eventTime"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/box_item"
+            app:layout_constraintStart_toEndOf="@+id/mode_image"
+            app:layout_constraintTop_toBottomOf="@id/eventDate"
+            app:layout_constraintBottom_toBottomOf="@id/box_item"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

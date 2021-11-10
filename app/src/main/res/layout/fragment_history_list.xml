@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--This layout will display all history of alerts the phone has recieved to
+    cause the wristband to vibrate-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".history.HistoryList">
+
+    <EditText
+        android:id="@+id/eSearch"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp"
+        android:hint="@string/D"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColorHint="@color/gray"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/searchHistoryButton"
+        app:layout_constraintStart_toEndOf="@id/searchHistoryButton"
+        app:layout_constraintTop_toTopOf="@id/searchHistoryButton"
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginStart="2dp"
+        android:autofillHints="@string/tDate" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/searchHistoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_search_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.081"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005"
+        android:contentDescription="@string/sing"
+        android:focusable="true"
+        android:padding="0dp"/>
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="408dp"
+        android:layout_height="625dp"
+        android:padding="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchHistoryButton"
+        app:layout_constraintVertical_bias="0.0">
+
+        <!--This recycler uses the miniLayout created history_item_card to repeat for multiple
+            uses-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/HistoryRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/history_item_card"/>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
