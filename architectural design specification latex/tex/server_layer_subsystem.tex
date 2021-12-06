@@ -1,0 +1,60 @@
+
+The Server Layer contains the notification and the database subsystems. The notification subsystem will handle the notifications that are pushed to the phone app and the database subsystem will handle the notification logs, account handling as well as the history logs. 
+
+\subsection{Notifications}
+This subsystem will handle the notifications that the phone app will receive from the server as well as the notifications received from various sensors. The notifications subsystem will work in tandem with the database subsystem to log notifications and push them to the user's phone app.
+
+\begin{figure}[h!]
+	\centering
+ 	\includegraphics[width=0.60\textwidth]{images/Server_Layer1}
+ \caption{Server Notifications Subsystem diagram}
+\end{figure}
+
+\subsubsection{Assumptions}
+It is assumed that the user has setup their notification settings on the phone app as well as the server settings. 
+
+\subsubsection{Responsibilities}
+This subsystem will handle all notifications received from the various sensors and notifications to be sent to the user's phone app. 
+
+\subsubsection{Subsystem Interfaces}
+
+\begin {table}[H]
+\caption {Notifications interfaces} 
+\begin{center}
+    \begin{tabular}{ | p{1cm} | p{6cm} | p{3cm} | p{3cm} |}
+    \hline
+    ID & Description & Inputs & Outputs \\ \hline
+    4 & Notification Logs & Event signal from database & Notification Logs Page \\ \hline
+    15 & Phone App Notifications & Event signal from database & Notification pushed to phone app \\ \hline
+    \end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Database}
+This subsystem will handle the user's login information, history logs, as well as the notification logs. The database subsystem will work in tandem with the notifications subsystem as well as the various sensors that are on the wristband layer.
+
+\begin{figure}[h!]
+	\centering
+ 	\includegraphics[width=0.60\textwidth]{images/Server_Layer2}
+ \caption{Server Database Subsystem diagram}
+\end{figure}
+
+\subsubsection{Assumptions}
+It is assumed that the database is connected to the phone app and the phone app will be able to communicate with the database. 
+
+\subsubsection{Responsibilities}
+This subsystem will handle all of the user's login information, history logs and the notification information. 
+
+\subsubsection{Subsystem Interfaces}
+
+\begin {table}[H]
+\caption {Database interfaces} 
+\begin{center}
+    \begin{tabular}{ | p{1cm} | p{6cm} | p{3cm} | p{3cm} |}
+    \hline
+    ID & Description & Inputs & Outputs \\ \hline
+    6 & Login information & User login information & Tokenized user login \\ \hline
+    7 & History Logs & Event signal from various sensors & History Log Page \\ \hline
+    \end{tabular}
+\end{center}
+\end{table}

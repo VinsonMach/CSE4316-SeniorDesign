@@ -1,0 +1,133 @@
+%%% LaTeX Template: Article/Thesis/etc. with colored headings and special fonts
+%%%
+%%% Source: http://www.howtotex.com/
+%%% Feel free to distribute this template, but please keep to referal to http://www.howtotex.com/ here.
+%%% February 2011
+%%%
+%%% Modified January 2016 by CDM
+
+%%%  Preamble
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1.0in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[latin1]{inputenc}					
+\usepackage{amsmath}						
+\usepackage{xcolor}
+\usepackage{cite}
+\usepackage{hyphenat}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{sectsty}
+\usepackage[compact]{titlesec} 
+\usepackage[tablegrid]{vhistory}
+\allsectionsfont{\color{accentcolor}\scshape\selectfont}
+
+%%% Definitions
+\definecolor{accentcolor}{rgb}{0.0,0.0,0.5} 
+\newcommand{\teamname}{VibeTracked}
+\newcommand{\productname}{Cerberus}
+\newcommand{\coursename}{CSE 4316: Senior Design I}
+\newcommand{\semester}{Fall 2021}
+\newcommand{\docname}{Architectural Design Specification}
+\newcommand{\department}{Department of Computer Science \& Engineering}
+\newcommand{\university}{The University of Texas at Arlington}
+\newcommand{\authors}{Katie Baumann \\ Matthew Blount \\ Xavier Holliday \\ Vinson Mach \\ Lauren Skinner \\ Paul Zhi}
+
+%%% Headers and footers
+\usepackage{fancyhdr}
+	\pagestyle{fancy}						% Enabling the custom headers/footers
+\usepackage{lastpage}	
+	% Header (empty)
+	\lhead{}
+	\chead{}
+	\rhead{}
+	% Footer
+	\lfoot{\footnotesize \teamname \ - \semester}
+	\cfoot{}
+	\rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
+	\renewcommand{\headrulewidth}{0.0pt}
+	\renewcommand{\footrulewidth}{0.4pt}
+
+%%% Change the abstract environment
+\usepackage[runin]{abstract}			% runin option for a run-in title
+%\setlength\absleftindent{30pt}			% left margin
+%\setlength\absrightindent{30pt}		% right margin
+\abslabeldelim{\quad}	
+\setlength{\abstitleskip}{-10pt}
+\renewcommand{\abstractname}{}
+\renewcommand{\abstracttextfont}{\color{accentcolor} \small \slshape}	% slanted text
+
+%%% Start of the document
+\begin{document}
+
+%%% Cover sheet
+{\centering \huge \color{accentcolor} \sc \textbf{\department \\ \university} \par}
+\vspace{1 in}
+{\centering \huge \color{accentcolor} \sc \textbf{\docname \\ \coursename \\ \semester} \par}
+\vspace{0.5 in}
+\begin{figure}[h!]
+	\centering
+   	\includegraphics[width=0.60\textwidth]{images/vibetracked-logo.png}
+\end{figure}
+\vspace{0.5 in}
+{\centering \huge \color{accentcolor} \sc \textbf{\teamname \\ \productname} \par}
+\vspace{0.5 in}
+{\centering \large \sc \textbf{\authors} \par}
+\newpage
+
+
+%\vspace{1 in}
+%\centerline{January 13th, 2012}
+%\newpage
+
+%%% Revision History
+\begin{versionhistory}
+  	\vhEntry{0.1}{10.29.2021}{VM}{document creation}
+  	\vhEntry{1.0}{11.15.2021}{KB|MB|XH|VM|LS|PZ}{first draft completion}
+\end{versionhistory}
+\newpage
+
+%%% Table of contents
+\setcounter{tocdepth}{2}
+\tableofcontents
+\newpage
+
+%%% List of figures and tables (optional)
+\listoffigures
+\listoftables
+\newpage
+
+%%% Document sections
+\section{Introduction}
+\input{tex/introduction.tex}
+\newpage
+\section{System Overview}
+\input{tex/system_overview.tex}
+\newpage
+\section{Subsystem Definitions \& Data Flow}
+\input{tex/data_flow.tex}
+\newpage
+\section{Power Management Layer Subsystems}
+\input{tex/power_mgmt_layer_subsystems.tex}
+\newpage
+\section{Wristband Layer Subsystems}
+\input{tex/wristband_layer_subsystems.tex}
+\newpage
+\section{Server Subsystems}
+\input{tex/server_layer_subsystem.tex}
+\newpage
+\section{Ring Base Subsystems}
+\input{tex/ring_base_layer_subsystem.tex}
+\newpage
+\section{Phone App Subsystems}
+\input{tex/phone_app_layer_subsystem.tex}
+\newpage
+
+%%% References
+\bibliographystyle{plain}
+\bibliographystyle{reference/IEEEtran_custom}
+\bibliography{reference/refs}{}
+
+\end{document}
