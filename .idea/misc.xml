@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Project_Android/CSE4316-SeniorDesign/app/src/main/res/layout/activity_login.xml" value="0.15806159420289856" />
+        <entry key="..\:/Project_Android/CSE4316-SeniorDesign/app/src/main/res/layout/activity_register.xml" value="0.16" />
+        <entry key="..\:/Project_Android/CSE4316-SeniorDesign/app/src/main/res/layout/fragment_app_settings.xml" value="0.15806159420289856" />
+        <entry key="..\:/Project_Android/CSE4316-SeniorDesign/app/src/main/res/layout/fragment_history_list.xml" value="0.15806159420289856" />
+        <entry key="..\:/Project_Android/CSE4316-SeniorDesign/app/src/main/res/layout/fragment_light_settings.xml" value="0.15806159420289856" />
+        <entry key="..\:/Project_Android/CSE4316-SeniorDesign/app/src/main/res/layout/fragment_notification_settings.xml" value="0.15806159420289856" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
