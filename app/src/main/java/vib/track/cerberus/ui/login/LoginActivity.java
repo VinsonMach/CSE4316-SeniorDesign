@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity{
 
         final EditText usernameEditText = binding.username;
         final EditText passwordEditText = binding.password;
-        final Button loginButton = binding.loginButton;
-        final Button registerButton = binding.registerButton;
+        final Button loginButton = (Button) findViewById(R.id.loginButton);
+        final Button registerButton = (Button) findViewById(R.id.registerButton);
         final ProgressBar loadingProgressBar = binding.loading;
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -118,20 +118,19 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
-        //lines 121 - 141 and 153-162 Ihave personnaly created, not yet tested.,
-        //add page transition functionality
+        // TODO: in app when you press done on keyboard, the app exits
+        //TODO: check in database if user is registered
         loginButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
-                goTo_HomepageActivity();//I think this may be the transition the function needed... Xavier-1/30/2022
-                //function declaration on line 158
+                goTo_HomepageActivity();//function declaration on line 158
             }
         });
 
-        //new register button
+        // TODO: add functionality to add user to database after they register
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -161,4 +160,5 @@ public class LoginActivity extends AppCompatActivity{
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
+
 }
