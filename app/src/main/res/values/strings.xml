@@ -37,6 +37,10 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
+    <string name="app_settings_label">App Settings</string>
+    <string name="light_settings_label">Light Settings</string>
+    <string name="noti_settings_label">Notification Settings</string>
+    <string name="vibrate_settings_label">Vibrate Settings</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
