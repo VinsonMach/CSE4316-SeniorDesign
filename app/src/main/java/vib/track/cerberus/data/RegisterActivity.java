@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import vib.track.cerberus.HomepageActivity;
 import vib.track.cerberus.R;
 import vib.track.cerberus.ui.login.LoginActivity;
 

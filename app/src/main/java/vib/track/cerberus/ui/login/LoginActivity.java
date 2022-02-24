@@ -23,11 +23,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import vib.track.cerberus.HomepageActivity;
+import vib.track.cerberus.home.HomepageActivity;
 import vib.track.cerberus.R;
 import vib.track.cerberus.data.RegisterActivity;
-import vib.track.cerberus.ui.login.LoginViewModel;
-import vib.track.cerberus.ui.login.LoginViewModelFactory;
 import vib.track.cerberus.databinding.ActivityLoginBinding;
 
 public class LoginActivity extends AppCompatActivity{
