@@ -39,7 +39,7 @@
     // APP SETTINGS PAGE
    <fragment
         android:id="@+id/app_settings"
-        android:name="vib.track.cerberus.settings.app_settings"
+        android:name="vib.track.cerberus.settings_activities.app_settings"
         android:label="@string/app_settings_label"
         tools:layout="@layout/fragment_app_settings">
 
@@ -49,7 +49,7 @@
    </fragment>
     <fragment
         android:id="@+id/notification_settings"
-        android:name="vib.track.cerberus.settings.notification_settings"
+        android:name="vib.track.cerberus.settings_activities.notification_settings"
         android:label="fragment_notification_settings"
         tools:layout="@layout/fragment_notification_settings" >
         <action
@@ -58,7 +58,7 @@
     </fragment>
     <fragment
         android:id="@+id/light_settings"
-        android:name="vib.track.cerberus.settings.light_settings"
+        android:name="vib.track.cerberus.settings_activities.light_settings"
         android:label="fragment_light_settings"
         tools:layout="@layout/fragment_light_settings" >
         <action
@@ -67,7 +67,7 @@
     </fragment>
     <fragment
         android:id="@+id/vibrate_settings"
-        android:name="vib.track.cerberus.settings.vibrate_settings"
+        android:name="vib.track.cerberus.settings_activities.vibrate_settings"
         android:label="fragment_vibrate_settings"
         tools:layout="@layout/fragment_vibrate_settings" >
         <action
@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/wristband_settings"
-        android:name="vib.track.cerberus.settings.wristband_settings"
+        android:name="vib.track.cerberus.settings_activities.wristband_settings"
         android:label="wristband_settings" >
         <action
             android:id="@+id/action_wristband_settings_to_light_settings"

@@ -1,4 +1,4 @@
-package vib.track.cerberus.settings;
+package vib.track.cerberus.settings_activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import vib.track.cerberus.R;
-import vib.track.cerberus.databinding.FragmentNotificationSettingsBinding;
+import vib.track.cerberus.databinding.FragmentAppSettingsBinding;
 
-public class notification_settings extends Fragment {
+public class app_settings extends Fragment {
 
-    private FragmentNotificationSettingsBinding binding;
+    private FragmentAppSettingsBinding binding;
 
     @Override
     public View onCreateView(
@@ -22,7 +22,7 @@ public class notification_settings extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentNotificationSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentAppSettingsBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -34,8 +34,8 @@ public class notification_settings extends Fragment {
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(notification_settings.this)
-                        .navigate(R.id.action_notification_settings_to_SecondFragment);
+                NavHostFragment.findNavController(app_settings.this)
+                        .navigate(R.id.action_app_settings_to_SecondFragment);
             }
         });
     }

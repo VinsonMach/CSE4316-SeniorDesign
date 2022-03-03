@@ -1,4 +1,4 @@
-package vib.track.cerberus.settings;
+package vib.track.cerberus.settings_activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import vib.track.cerberus.R;
-import vib.track.cerberus.databinding.FragmentLightSettingsBinding;
+import vib.track.cerberus.databinding.FragmentNotificationSettingsBinding;
 
-public class light_settings extends Fragment {
+public class notification_settings extends Fragment {
 
-    private FragmentLightSettingsBinding binding;
+    private FragmentNotificationSettingsBinding binding;
 
     @Override
     public View onCreateView(
@@ -22,7 +22,7 @@ public class light_settings extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentLightSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentNotificationSettingsBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -30,12 +30,12 @@ public class light_settings extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Back button to Wristband Settings Page
-        binding.buttonBackWrist.setOnClickListener(new View.OnClickListener() {
+        // Back button to second fragment
+        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                NavHostFragment.findNavController(light_settings.this)
-                        .navigate(R.id.action_light_settings_to_wristband_settings);
+                NavHostFragment.findNavController(notification_settings.this)
+                        .navigate(R.id.action_notification_settings_to_SecondFragment);
             }
         });
     }

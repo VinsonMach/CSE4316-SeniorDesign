@@ -1,4 +1,4 @@
-package vib.track.cerberus.settings;
+package vib.track.cerberus.settings_activities;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
