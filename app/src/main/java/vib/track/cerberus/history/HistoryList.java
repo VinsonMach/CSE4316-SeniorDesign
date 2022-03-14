@@ -1,14 +1,22 @@
 package vib.track.cerberus.history;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import vib.track.cerberus.R;
+import vib.track.cerberus.data.EventsData;
+import vib.track.cerberus.network.HistoryPageAPI;
+import vib.track.cerberus.network.RetrofitClient_historypage;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +24,7 @@ import vib.track.cerberus.R;
  * create an instance of this fragment.
  */
 public class HistoryList extends Fragment {
+    private HistoryPageAPI service;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,7 +64,22 @@ public class HistoryList extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-    }
+        Toast.makeText(getActivity(), "inside oncreate", Toast.LENGTH_LONG).show();
+
+        Call<List<EventsData>> call = RetrofitClient_historypage.getInstance().getMyApi().showEvents();
+        call.enqueue(new Callback<List<EventsData>>() {
+            @Override
+            public void onResponse(Call<List<EventsData>> call, Response<List<EventsData>> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<List<EventsData>> call, Throwable t) {
+
+            }
+        });
+
+        }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

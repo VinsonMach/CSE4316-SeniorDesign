@@ -13,15 +13,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import vib.track.cerberus.R;
-import vib.track.cerberus.network.RetrofitClient;
-import vib.track.cerberus.network.ServiceApi;
-import vib.track.cerberus.data.LoginData;
-import vib.track.cerberus.data.LoginResponse;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import vib.track.cerberus.R;
+import vib.track.cerberus.data.LoginData;
+import vib.track.cerberus.data.LoginResponse;
+import vib.track.cerberus.home.HomepageActivity;
+import vib.track.cerberus.network.RetrofitClient;
+import vib.track.cerberus.network.ServiceApi;
 
 public class LoginActivity extends AppCompatActivity {
     private AutoCompleteTextView mEmailView;
@@ -58,6 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    // TODO: after getting password wrong, app just exits, should give user another chance to login
     private void attemptLogin() {
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -105,6 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                 LoginResponse result = response.body();
                 Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 showProgress(false);
+                goTo_HomepageActivity();
             }
 
             @Override
@@ -126,6 +128,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showProgress(boolean show) {
         mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+    }
+
+    public void goTo_HomepageActivity(){
+        Intent intent = new Intent(this, HomepageActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }
 

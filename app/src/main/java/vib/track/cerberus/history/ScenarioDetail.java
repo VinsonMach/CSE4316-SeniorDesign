@@ -7,42 +7,16 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import vib.track.cerberus.R;
-import vib.track.cerberus.data.model.HistoryPageEvent;
-import vib.track.cerberus.network.RetrofitClient;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link ScenarioDetail#newInstance} factory method to
  * create an instance of this fragment.
  */
+// TODO: 
 public class ScenarioDetail extends Fragment {
 
-    public void getEvents() {
-        Call<List<HistoryPageEvent>> call = RetrofitClient.getInstance().getMyApi().getEvent();
-        call.enqueue(new Callback<List<HistoryPageEvent>>() {
-            @Override
-            public void onResponse(Call<List<HistoryPageEvent>> call, Response<List<HistoryPageEvent>> response) {
-                List<HistoryPageEvent> myEvents = response.body();
-                String[] oneEvent = new String[myEvents.size()];
-
-                for (int i=0;i<myEvents.size();i++) {
-                    oneEvent[i] = myEvents.get(i).getName();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<HistoryPageEvent>> call, Throwable t) {
-                //Toast.makeText(getApplicationContext(), "An error has occured", Toast.LENGTH_LONG).show();
-            }
-        });
-    }
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
