@@ -1,6 +1,8 @@
 package vib.track.cerberus.ui.login_registration_activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import vib.track.cerberus.R;
+import vib.track.cerberus.home.HomepageActivity;
 import vib.track.cerberus.network.RetrofitClient;
 import vib.track.cerberus.network.ServiceApi;
 import vib.track.cerberus.data.LoginData;
@@ -22,6 +25,7 @@ import vib.track.cerberus.data.LoginResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import vib.track.cerberus.ring_connect.login_ring;
 
 public class LoginActivity extends AppCompatActivity {
     private AutoCompleteTextView mEmailView;
@@ -30,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button mJoinButton;
     private ProgressBar mProgressView;
     private ServiceApi service;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         mProgressView = (ProgressBar) findViewById(R.id.login_progress);
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
+
+        sharedpreferences = getSharedPreferences("CerberusPreferences", Context.MODE_PRIVATE);
 
         mEmailLoginButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -103,7 +110,20 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse result = response.body();
-                Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putInt("UserId", result.getUserId());
+                editor.commit();
+
+                if (result.isRefreshToken()) {
+                    Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
+                    startActivity(intent);
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), login_ring.class);
+                    startActivity(intent);
+                }
+
                 showProgress(false);
             }
 
