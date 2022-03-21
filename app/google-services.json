@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1008154458847",
+    "project_id": "cerberus-fc82a",
+    "storage_bucket": "cerberus-fc82a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008154458847:android:49e59dcf5c9dfc7a45076a",
+        "android_client_info": {
+          "package_name": "vib.track.cerberus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008154458847-b3qi9pgf7oo07l8k1mvvmn9r38uv6adn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQXGEWJR72w5MaYi2c319qwrqrFt3ec_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008154458847-b3qi9pgf7oo07l8k1mvvmn9r38uv6adn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
