@@ -103,7 +103,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryH
     @Override
     public int getItemCount(){ return historyList.size(); }
 
-    public HistoryAdapter(List<History> Histories){ historyList =  Histories; }
+    public HistoryAdapter(List<History> Histories){ historyList = Histories; }
     public void setOnClickAction(OnClickAction onClickAction) { this.onClickAction = onClickAction; }
 
 }
