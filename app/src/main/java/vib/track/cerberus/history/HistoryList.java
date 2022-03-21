@@ -14,7 +14,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vib.track.cerberus.R;
-import vib.track.cerberus.data.EventsData;
+import vib.track.cerberus.data.History;
 import vib.track.cerberus.network.HistoryPageAPI;
 import vib.track.cerberus.network.RetrofitClient_historypage;
 
@@ -66,15 +66,15 @@ public class HistoryList extends Fragment {
         }
         Toast.makeText(getActivity(), "inside oncreate", Toast.LENGTH_LONG).show();
 
-        Call<List<EventsData>> call = RetrofitClient_historypage.getInstance().getMyApi().showEvents();
-        call.enqueue(new Callback<List<EventsData>>() {
+        Call<List<History>> call = RetrofitClient_historypage.getInstance().getMyApi().showEvents();
+        call.enqueue(new Callback<List<History>>() {
             @Override
-            public void onResponse(Call<List<EventsData>> call, Response<List<EventsData>> response) {
+            public void onResponse(Call<List<History>> call, Response<List<History>> response) {
 
             }
 
             @Override
-            public void onFailure(Call<List<EventsData>> call, Throwable t) {
+            public void onFailure(Call<List<History>> call, Throwable t) {
 
             }
         });

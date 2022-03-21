@@ -4,9 +4,9 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import vib.track.cerberus.data.EventsData;
+import vib.track.cerberus.data.History;
 
 public interface HistoryPageAPI {
     @GET("/ring/event")
-    Call<List<EventsData>> showEvents();
+    Call<List<History>> showEvents();
 }
