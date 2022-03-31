@@ -12,6 +12,9 @@ public class LoginResponse {
     @SerializedName("userId")
     private int userId;
 
+    @SerializedName("ringLogin")
+    private boolean ringLogin;
+
     public int getCode() {
         return code;
     }
@@ -23,4 +26,6 @@ public class LoginResponse {
     public int getUserId() {
         return userId;
     }
+
+    public boolean isRefreshToken() { return ringLogin; }
 }

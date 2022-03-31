@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Cerberus"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ring_connect.auth_ring"
+            android:exported="false" />
+        <activity
+            android:name=".ring_connect.login_ring"
+            android:exported="false" />
+        <activity
             android:name=".home.HomepageActivity"
             android:exported="false"
             android:label="@string/title_activity_homepage"
