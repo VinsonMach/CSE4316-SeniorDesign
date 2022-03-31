@@ -3,10 +3,17 @@ package vib.track.cerberus.data;
 import com.google.gson.annotations.SerializedName;
 
 public class RingLoginResponse {
-    @SerializedName("restClient")
-    private String restClient;
+    @SerializedName("resultCode")
+    private int resultCode;
 
-    public String getRestClient() {
-        return restClient;
+    @SerializedName("message")
+    private String message;
+
+    public int getResultCode() {
+        return resultCode;
+    }
+
+    public String getMessage() {
+        return message;
     }
 }

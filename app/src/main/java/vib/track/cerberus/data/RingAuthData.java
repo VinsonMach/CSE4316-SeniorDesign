@@ -9,12 +9,16 @@ public class RingAuthData {
     @SerializedName("authCode")
     String authCode;
 
-    @SerializedName("restClient")
-    String restClient;
+    @SerializedName("email")
+    String email;
 
-    public RingAuthData(int userId, String authCode, String restClient) {
+    @SerializedName("password")
+    String password;
+
+    public RingAuthData(int userId, String authCode, String email, String password) {
         this.userId = userId;
         this.authCode = authCode;
-        this.restClient = restClient;
+        this.email = email;
+        this.password = password;
     }
 }

@@ -60,9 +60,10 @@ public class login_ring extends AppCompatActivity {
             public void onResponse(Call<RingLoginResponse> call, Response<RingLoginResponse> response) {
                 RingLoginResponse result = response.body();
 
-                if (!result.getRestClient().isEmpty()) {
+                if (result.getResultCode() == 200) {
                     SharedPreferences.Editor editor = sharedpreferences.edit();
-                    editor.putString("restClient", result.getRestClient());
+                    editor.putString("tempEmail", email);
+                    editor.putString("tempPass", pass);
                     editor.commit();
                     Intent auth = new Intent(login_ring.this, auth_ring.class);
                     startActivity(auth);

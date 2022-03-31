@@ -46,13 +46,15 @@ public class auth_ring extends AppCompatActivity {
     public void submitAuth(View view) {
         int userId = sharedPreferences.getInt("UserId", 0);
         String code = m2faCode.getText().toString();
-        String restClient = sharedPreferences.getString("restClient", "");
+        String email = sharedPreferences.getString("tempEmail", "");
+        String password = sharedPreferences.getString("tempPass", "");
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove("restClient");
+        editor.remove("tempEmail");
+        editor.remove("tempPass");
         editor.commit();
 
-        RingAuthData data = new RingAuthData(userId, code, restClient);
+        RingAuthData data = new RingAuthData(userId, code, email, password);
 
         service.ringAuth(data).enqueue(new Callback<RingAuthResponse>() {
             @Override
@@ -63,13 +65,13 @@ public class auth_ring extends AppCompatActivity {
                     Intent home = new Intent(auth_ring.this, HomepageActivity.class);
                     startActivity(home);
                 } else {
-                    Toast.makeText(auth_ring.this, "Login error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(auth_ring.this, "Ring connection error", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<RingAuthResponse> call, Throwable t) {
-                Toast.makeText(auth_ring.this, "Login error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(auth_ring.this, "Ring error", Toast.LENGTH_SHORT).show();
                 Log.e("Login error", t.getMessage());
             }
         });
