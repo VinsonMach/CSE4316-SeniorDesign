@@ -131,6 +131,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<LoginResponse> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Login error", Toast.LENGTH_SHORT).show();
                 Log.e("Login error", t.getMessage());
+                Log.e("Login stack trace", t.getStackTrace().toString());
                 showProgress(false);
             }
         });
