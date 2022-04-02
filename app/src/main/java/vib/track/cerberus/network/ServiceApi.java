@@ -9,6 +9,8 @@ import vib.track.cerberus.data.LoginResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import vib.track.cerberus.data.NotifTokenData;
+import vib.track.cerberus.data.NotifTokenResponse;
 import vib.track.cerberus.data.RingAuthData;
 import vib.track.cerberus.data.RingAuthResponse;
 import vib.track.cerberus.data.RingLoginData;
@@ -26,4 +28,7 @@ public interface ServiceApi {
 
     @POST("/ring/auth")
     Call<RingAuthResponse> ringAuth(@Body RingAuthData data);
+
+    @POST("/notif/token")
+    Call<NotifTokenResponse> notifToken(@Body NotifTokenData data);
 }
