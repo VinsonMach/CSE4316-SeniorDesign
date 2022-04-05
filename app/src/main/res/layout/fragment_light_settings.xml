@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".settings_activities.light_settings">
+    tools:context=".settings_activities.light_settings"
+    tools:ignore="ExtraText">
 
     <TextView
         android:id="@+id/textView3"
@@ -16,6 +17,7 @@
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="58dp" />
 
+    // BACK BUTTON
     <Button
         android:id="@+id/button_BackWrist"
         android:layout_width="372dp"
@@ -25,10 +27,11 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="52dp"
-        android:text="Previous"
+        android:text="@string/previous"
         app:backgroundTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 

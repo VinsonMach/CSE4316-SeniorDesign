@@ -16,15 +16,16 @@
         tools:layout_editor_absoluteY="58dp"
         tools:ignore="MissingConstraints" />
 
+    // BACK BUTTON
     <Button
         android:id="@+id/button_second"
         android:layout_width="372dp"
         android:layout_height="50dp"
         android:layout_marginBottom="52dp"
-        android:text="Previous"
+        android:text="@string/previous"
         app:backgroundTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

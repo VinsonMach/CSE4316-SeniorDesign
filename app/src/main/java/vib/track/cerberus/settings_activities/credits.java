@@ -10,11 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import vib.track.cerberus.R;
-import vib.track.cerberus.databinding.FragmentAppSettingsBinding;
+import vib.track.cerberus.databinding.FragmentCreditsBinding;
 
-public class app_settings extends Fragment {
+public class credits extends Fragment {
 
-    private FragmentAppSettingsBinding binding;
+    private FragmentCreditsBinding binding;
 
     @Override
     public View onCreateView(
@@ -22,7 +22,7 @@ public class app_settings extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = FragmentAppSettingsBinding.inflate(inflater, container, false);
+        binding = FragmentCreditsBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
     }
@@ -30,14 +30,6 @@ public class app_settings extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Back button to Settings Page
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(app_settings.this)
-                        .navigate(R.id.action_app_settings_to_SecondFragment);
-            }
-        });
     }
 
     @Override
@@ -45,5 +37,4 @@ public class app_settings extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-
 }

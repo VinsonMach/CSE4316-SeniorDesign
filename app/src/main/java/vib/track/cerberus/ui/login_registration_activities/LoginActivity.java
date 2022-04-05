@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import vib.track.cerberus.R;
+import vib.track.cerberus.home.HomepageActivity;
 import vib.track.cerberus.network.RetrofitClient;
 import vib.track.cerberus.network.ServiceApi;
 import vib.track.cerberus.data.LoginData;
@@ -105,6 +106,11 @@ public class LoginActivity extends AppCompatActivity {
                 LoginResponse result = response.body();
                 Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                 showProgress(false);
+
+                // REPLACE THIS WITH NEW RING TOKEN STUFF
+                Intent home = new Intent(LoginActivity.this, HomepageActivity.class);
+                startActivity(home);
+
             }
 
             @Override

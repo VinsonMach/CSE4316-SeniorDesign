@@ -10,14 +10,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
 
-
-    <string name="company_name">"VibeTracked"</string>
-
-
     <string name="dr">"door"</string>
     <string name="wnd">"window"</string>
     <string name="db">"doorbell"</string>
-
 
     <string name="lset">"light settings"</string>
     <string name="vset">"vibr. settings"</string>
@@ -29,18 +24,29 @@
     <string name="D">"Date"</string>
     <string name="M">"Mode"</string>
     <string name="W">"Which"</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sing">Searching</string>
     <string name="tDate">today</string>
     <string name="title_activity_homepage">HomepageActivity</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="second_fragment_label">Settings Page</string>
+    <string name="settings_page_label">Settings Page</string>
+    <string name="settings_label">Settings</string>
+    <string name="history_label">History</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
     <string name="app_settings_label">App Settings</string>
     <string name="light_settings_label">Light Settings</string>
     <string name="noti_settings_label">Notification Settings</string>
     <string name="vibrate_settings_label">Vibrate Settings</string>
+    <string name="wristband_settings_label">Wristband Settings</string>
+    <string name="credits_label">Credits</string>
+
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
