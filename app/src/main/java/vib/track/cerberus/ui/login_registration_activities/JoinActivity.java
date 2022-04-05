@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -94,7 +95,13 @@ public class JoinActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            startJoin(new JoinData(name, email, password));
+            String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+            BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), bcryptHashString);
+            String hashedpassword = result.toString();
+            // TODO: it is not good practice to store the hash on database, find work around
+            // TODO: this branch has the issue of if you login in with the wrong password it still logins in.....
+
+            startJoin(new JoinData(name, email, hashedpassword));
             showProgress(true);
         }
     }
@@ -132,4 +139,6 @@ public class JoinActivity extends AppCompatActivity {
     private void showProgress(boolean show) {
         mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
+
+
 }
