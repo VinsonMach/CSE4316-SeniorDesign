@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class LoginResponse {
     @SerializedName("code")
-    private int code;
+    private String code;
 
     @SerializedName("message")
     private String message;
@@ -12,7 +12,7 @@ public class LoginResponse {
     @SerializedName("userId")
     private int userId;
 
-    public int getCode() {
+    public String getCode() {
         return code;
     }
 

@@ -96,6 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             startLogin(new LoginData(email, password));
             showProgress(true);
+
         }
     }
 
@@ -109,8 +110,11 @@ public class LoginActivity extends AppCompatActivity {
 
                 // REPLACE THIS WITH NEW RING TOKEN STUFF
                 Intent home = new Intent(LoginActivity.this, HomepageActivity.class);
-                startActivity(home);
-
+                //There's probably a better way to do this..... but it works
+                if(!result.getCode().equals("204"))
+                {
+                    startActivity(home);
+                }
             }
 
             @Override
