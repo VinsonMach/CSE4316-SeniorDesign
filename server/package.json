@@ -1,0 +1,24 @@
+{
+  "name": "pk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sql.js",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "firebase-admin": "^10.0.2",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.7",
+    "ring-api": "^3.0.7",
+    "ring-client-api": "^9.24.0",
+    "sql": "^0.78.0",
+    "typescript": "^4.6.3"
+  },
+  "scripts": {
+    "tsc": "tsc -t es5 sql.ts ./ring/refresh-token.ts ./ring/rest-client.ts ./ring/ring-types.ts ./ring/util.ts",
+    "start": "npm run tsc && node sql.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
