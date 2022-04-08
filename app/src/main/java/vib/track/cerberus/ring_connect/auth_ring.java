@@ -10,6 +10,8 @@ import vib.track.cerberus.data.RingAuthData;
 import vib.track.cerberus.data.RingAuthResponse;
 import vib.track.cerberus.data.RingLoginData;
 import vib.track.cerberus.data.RingLoginResponse;
+import vib.track.cerberus.data.RingNotifyData;
+import vib.track.cerberus.data.RingNotifyResponse;
 import vib.track.cerberus.home.HomepageActivity;
 import vib.track.cerberus.network.RetrofitClient;
 import vib.track.cerberus.network.ServiceApi;
