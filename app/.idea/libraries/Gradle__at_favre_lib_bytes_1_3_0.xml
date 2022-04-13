@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: at.favre.lib:bytes:1.3.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/at.favre.lib/bytes/1.3.0/49be3deb54a48744bbab869bc9b636c81d255d30/bytes-1.3.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/at.favre.lib/bytes/1.3.0/39e6982ea8662ebd4ef87eeae6b6ba7a76c38c57/bytes-1.3.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/at.favre.lib/bytes/1.3.0/ea4aeb8cebead57ba7715eeb219a83be773f58ec/bytes-1.3.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

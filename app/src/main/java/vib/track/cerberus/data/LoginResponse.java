@@ -6,21 +6,22 @@ public class LoginResponse {
     @SerializedName("code")
     private String code;
 
-    @SerializedName("message")
-    private String message;
+    @SerializedName("ringLogin")
+    private boolean ringLogin;
 
     @SerializedName("userId")
-    private int userId;
+    private String userId;
+
+    @SerializedName("hashedPwd")
+    private String hashedpassword;
 
     public String getCode() {
         return code;
     }
 
-    public String getMessage() {
-        return message;
-    }
+    public boolean getringLogin() { return ringLogin; }
 
-    public int getUserId() {
-        return userId;
-    }
+    public String getUserId() { return userId; }
+
+    public String getHashedpassword() { return hashedpassword; }
 }

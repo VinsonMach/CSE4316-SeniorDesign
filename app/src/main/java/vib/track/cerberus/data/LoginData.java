@@ -13,4 +13,6 @@ public class LoginData {
         this.userEmail = userEmail;
         this.userPwd = userPwd;
     }
+
+    public String getPassword(){ return userPwd; }
 }
