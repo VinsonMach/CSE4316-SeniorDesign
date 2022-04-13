@@ -122,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                 //rightPwd.verified == true when entered password equals hashed password
                 if(rightPwd.verified && !result.getCode().equals("404"))
                 {
-                    message = "Login success. " + result.getUserId() + " welcome!";
+                    message = "Login success. " + result.getUserName() + " welcome!";
                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
                     startActivity(home);
                 }

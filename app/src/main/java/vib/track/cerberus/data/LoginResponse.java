@@ -9,8 +9,8 @@ public class LoginResponse {
     @SerializedName("ringLogin")
     private boolean ringLogin;
 
-    @SerializedName("userId")
-    private String userId;
+    @SerializedName("userName")
+    private String userName;
 
     @SerializedName("hashedPwd")
     private String hashedpassword;
@@ -21,7 +21,7 @@ public class LoginResponse {
 
     public boolean getringLogin() { return ringLogin; }
 
-    public String getUserId() { return userId; }
+    public String getUserName() { return userName; }
 
     public String getHashedpassword() { return hashedpassword; }
 }
