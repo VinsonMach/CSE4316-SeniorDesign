@@ -1,82 +1,122 @@
 package vib.track.cerberus.home;
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
-import com.google.android.material.navigation.NavigationView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.MenuItem;
+import android.view.View;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import vib.track.cerberus.R;
-import vib.track.cerberus.history.HistoryList;
-import vib.track.cerberus.settings_activities.credits;
 
-public class HomepageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class HomepageActivity extends AppCompatActivity {
 
-    private DrawerLayout drawer;
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new HistoryList()).commit();
-            navigationView.setCheckedItem(R.id.nav_history);
-        }
+        // assign variables
+        drawerLayout = findViewById(R.id.drawer_layout);
 
     }
 
-    @SuppressLint("NonConstantResourceId")
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.nav_history:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HistoryList()).commit();
-                break;
-            case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SecondFragment()).commit();
-                break;
-            case R.id.nav_credits:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new credits()).commit();
-                break;
-        }
-
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+    public void clickMenu(View view){
+        // open drawer
+        openDrawer(drawerLayout);
     }
 
-    @Override
-    public void onBackPressed() {
+    public static void openDrawer(DrawerLayout drawer) {
+        // open drawer layout
+        drawer.openDrawer(GravityCompat.START);
+    }
+
+    public void clickLogo(View view){
+        // close drawer
+        closeDrawer(drawerLayout);
+    }
+
+    public static void closeDrawer(DrawerLayout drawer) {
+        // close drawer layout
+        // check condition
         if (drawer.isDrawerOpen(GravityCompat.START)){
+            // close drawer when drawer is open
             drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
         }
+    }
+
+    public void clickHistory(View view){
+        // recreate history activity
+        recreate();
+    }
+
+    public void clickSettings(View view){
+        // redirect activity to Settings
+        redirectActivity(this,SecondFragment.class);
+    }
+
+    public void clickCredits(View view){
+        // close app
+        redirectActivity(this,credits.class);
+    }
+
+    public void clickLogout(View view){
+        // close app
+        logout(this);
+    }
+
+    public static void logout(Activity activity) {
+        // initialize alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        // set title
+        builder.setTitle("Logout");
+        // set message
+        builder.setMessage("Are you sure that you want to logout?");
+        // positive yes button
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // finish activity
+                activity.finishAffinity();
+                // exit app
+                System.exit(0);
+            }
+        });
+        // negative no button
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // dismiss dialog
+                dialogInterface.dismiss();
+            }
+        });
+
+        // show dialog
+        builder.show();
+    }
+
+    public static void redirectActivity(Activity activity,Class aClass) {
+        // initialize intent
+        Intent intent = new Intent(activity, aClass);
+        // set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // start activity
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        // close drawer
+        closeDrawer(drawerLayout);
     }
 
 }
