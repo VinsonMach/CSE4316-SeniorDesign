@@ -14,6 +14,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import vib.track.cerberus.R;
+import vib.track.cerberus.history.HistoryActivity;
 
 public class HomepageActivity extends AppCompatActivity {
 
@@ -53,9 +54,14 @@ public class HomepageActivity extends AppCompatActivity {
         }
     }
 
+    public void clickHome(View view){
+        // recreate home activity
+        recreate();
+    }
+
     public void clickHistory(View view){
         // recreate history activity
-        recreate();
+        redirectActivity(this, HistoryActivity.class);
     }
 
     public void clickSettings(View view){
