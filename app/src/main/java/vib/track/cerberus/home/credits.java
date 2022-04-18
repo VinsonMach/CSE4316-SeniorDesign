@@ -19,10 +19,10 @@ public class credits extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_second);
+        setContentView(R.layout.fragment_credits);
 
         // assign variables
-        drawerLayout = findViewById(R.id.drawer_layout);
+        drawerLayout = findViewById(R.id.drawer_layout2);
     }
 
     public void clickMenu(View view){
