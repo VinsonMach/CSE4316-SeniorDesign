@@ -62,7 +62,12 @@
             android:id="@+id/HistoryRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:listitem="@layout/history_item_card"/>
+            tools:listitem="@layout/history_item_card" />
     </ScrollView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/history_label"/>
 
 </RelativeLayout>

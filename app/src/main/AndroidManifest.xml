@@ -14,10 +14,7 @@
         android:theme="@style/Theme.Cerberus"
         android:usesCleartextTraffic="true"
         tools:ignore="ExtraText">
-        <activity
-            android:name=".home.HomepageActivity"
-            android:exported="false"
-            android:theme="@style/Theme.Cerberus.NoActionBar" />
+
         // can add android:label="@string/...." above for toolbar labels
         <activity
             android:name=".ui.login_registration_activities.JoinActivity"
@@ -31,6 +28,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".home.HomepageActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Cerberus.NoActionBar" />
+        <activity
+            android:name=".home.SecondFragment"
+            android:exported="false"
+            android:theme="@style/Theme.Cerberus.NoActionBar" />
+        <activity
+            android:name=".home.credits"
+            android:exported="false"
+            android:theme="@style/Theme.Cerberus.NoActionBar" />
     </application>
 
 </manifest>

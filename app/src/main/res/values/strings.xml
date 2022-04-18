@@ -46,6 +46,18 @@
     <string name="vibrate_settings_label">Vibrate Settings</string>
     <string name="wristband_settings_label">Wristband Settings</string>
     <string name="credits_label">Credits</string>
+    <string name="logout_label">Logout</string>
+
+    <string name="vibe_intervals">Select Vibration Intervals</string>
+    <string name="noti_mute">Mute Notifications</string>
+
+    <string-array name="vibrations">
+        <item>10 ms</item>
+        <item>20 ms</item>
+        <item>30 ms</item>
+        <item>40 ms</item>
+        <item>50 ms</item>
+    </string-array>
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>
