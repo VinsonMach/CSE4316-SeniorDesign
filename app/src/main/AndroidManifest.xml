@@ -34,6 +34,10 @@
             android:exported="false"
             android:theme="@style/Theme.Cerberus.NoActionBar" />
         <activity
+            android:name=".history.HistoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Cerberus.NoActionBar" />
+        <activity
             android:name=".home.SecondFragment"
             android:exported="false"
             android:theme="@style/Theme.Cerberus.NoActionBar" />

@@ -54,11 +54,6 @@ public class HomepageActivity extends AppCompatActivity {
         }
     }
 
-    public void clickHome(View view){
-        // recreate home activity
-        recreate();
-    }
-
     public void clickHistory(View view){
         // recreate history activity
         redirectActivity(this, HistoryActivity.class);
