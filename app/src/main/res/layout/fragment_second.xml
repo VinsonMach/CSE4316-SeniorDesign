@@ -21,23 +21,9 @@
                 layout="@layout/main_toolbar" />
 
             // app
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="413dp"
-                android:layout_height="40dp"
-                android:gravity="center_horizontal"
-                android:text="@string/app_settings_label"
-                android:textSize="30sp" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:gravity="center_horizontal"
-                android:text="APP SETTINGS AND STUFF"
-                android:textSize="20sp" />
 
             // notifications
+
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
@@ -63,24 +49,50 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/textViewInterval"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:text="@string/vibe_intervals"
                 android:textSize="20sp" />
 
-            <Spinner
-                android:id="@+id/spinner1"
+            <EditText
+                android:id="@+id/editTextInterval"
                 android:layout_width="match_parent"
-                android:layout_height="38dp" />
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/vibe_intervals" />
+
+            <TextView
+                android:id="@+id/textViewCycle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/vibe_cycle"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextCycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/vibe_cycle" />
+
+            <Button
+                android:id="@+id/apply_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/apply_settings"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/CompanyColor"/>
 
             <Button
                 android:id="@+id/save_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:text="Save Settings"
-                android:textColor="@color/CompanyColor" />
+                android:text="@string/save_settings"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/CompanyColor"/>
 
         </LinearLayout>
 

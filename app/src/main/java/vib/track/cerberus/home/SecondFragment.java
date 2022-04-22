@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,12 +26,21 @@ import vib.track.cerberus.history.HistoryList;
 public class SecondFragment extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Switch switch1;
+    private TextView textViewInterval;
+    private TextView textViewCycle;
+    private EditText editTextInterval;
+    private EditText editTextCycle;
     DrawerLayout drawerLayout;
 
     public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String TEXTINTERVAL = "textInterval";
+    public static final String TEXTCYCLE = "textCycle";
     public static final String SWITCH1 = "swtich1";
 
+    private Button applySettingsButton;
     private Button saveButton;
+    private String textInterval;
+    private String textCycle;
     private boolean switchOnOff;
 
     @Override
@@ -40,15 +51,23 @@ public class SecondFragment extends AppCompatActivity implements AdapterView.OnI
         // assign variables
         drawerLayout = findViewById(R.id.drawer_layout);
 
-        Spinner mySpinner = (Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> myAdapter = ArrayAdapter.createFromResource(this,
-                R.array.vibrations, android.R.layout.simple_spinner_item);
-        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinner.setAdapter(myAdapter);
-        mySpinner.setOnItemSelectedListener(this);
+        textViewInterval = (TextView) findViewById(R.id.textViewInterval);
+        textViewCycle = (TextView) findViewById(R.id.textViewCycle);
 
+        editTextInterval = (EditText) findViewById(R.id.editTextInterval);
+        editTextCycle = (EditText) findViewById(R.id.editTextCycle);
+
+        applySettingsButton = (Button) findViewById(R.id.apply_button);
         saveButton = (Button) findViewById(R.id.save_button);
         switch1 = (Switch) findViewById(R.id.switch1);
+
+        applySettingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textViewInterval.setText(editTextInterval.getText().toString());
+                textViewCycle.setText(editTextCycle.getText().toString());
+            }
+        });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +85,8 @@ public class SecondFragment extends AppCompatActivity implements AdapterView.OnI
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
+        editor.putString(TEXTINTERVAL, textViewInterval.getText().toString());
+        editor.putString(TEXTCYCLE, textViewCycle.getText().toString());
         editor.putBoolean(SWITCH1, switch1.isChecked());
         editor.apply();
 
@@ -74,10 +95,14 @@ public class SecondFragment extends AppCompatActivity implements AdapterView.OnI
 
     public void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        textInterval = sharedPreferences.getString(TEXTINTERVAL, "");
+        textCycle = sharedPreferences.getString(TEXTCYCLE, "");
         switchOnOff = sharedPreferences.getBoolean(SWITCH1, false);
     }
 
     public void updateViews() {
+        textViewInterval.setText(textInterval);
+        textViewCycle.setText(textCycle);
         switch1.setChecked(switchOnOff);
     }
 

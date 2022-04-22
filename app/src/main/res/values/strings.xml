@@ -48,8 +48,13 @@
     <string name="credits_label">Credits</string>
     <string name="logout_label">Logout</string>
 
-    <string name="vibe_intervals">Select Vibration Intervals</string>
+    <string name="vibe_intervals">Enter Vibration Intervals (ms)</string>
+    <string name="current_intervals">Current Vibration Intervals</string>
+    <string name="vibe_cycle">Enter Vibration Cycles</string>
+    <string name="current_cycle">Current Vibration Cycles</string>
     <string name="noti_mute">Mute Notifications</string>
+    <string name="apply_settings">Apply Settings</string>
+    <string name="save_settings">Save Settings</string>
 
     <string-array name="vibrations">
         <item>10 ms</item>

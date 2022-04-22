@@ -10,6 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,10 +101,15 @@ public class HistoryActivity extends AppCompatActivity {
     public static void closeDrawer(DrawerLayout drawer) {
         // close drawer layout
         // check condition
-        if (drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             // close drawer when drawer is open
             drawer.closeDrawer(GravityCompat.START);
         }
+    }
+
+    public void clickHome(View view){
+        // redirect to history
+        HomepageActivity.redirectActivity(this, HomepageActivity.class);
     }
 
     public void clickHistory(View view){
