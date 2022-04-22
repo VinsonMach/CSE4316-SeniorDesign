@@ -1,57 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
     tools:context=".home.SecondFragment">
 
-    <Button
-        android:id="@+id/button_app_set"
-        android:layout_width="374dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="604dp"
-        android:text="App Settings"
-        app:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:id="@+id/headerView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:text="@string/settings_page_label"
+            android:textSize="30sp"
+            tools:ignore="ExtraText">
 
-    <Button
-        android:id="@+id/button_second"
-        android:layout_width="372dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="52dp"
-        android:text="Previous"
-        app:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent" />
+            <include
+                layout="@layout/main_toolbar" />
 
-    <Button
-        android:id="@+id/button_noti_set"
-        android:layout_width="374dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="544dp"
-        android:text="Notification Settings"
-        app:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.594"
-        app:layout_constraintStart_toStartOf="parent" />
+            // app
 
-    <Button
-        android:id="@+id/button_wrist_set"
-        android:layout_width="374dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="480dp"
-        android:text="Wristband Settings"
-        app:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.594"
-        app:layout_constraintStart_toStartOf="parent" />
+            // notifications
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_horizontal"
+                android:text="@string/noti_settings_label"
+                android:textSize="30sp" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/noti_mute"
+                android:textSize="20sp" />
+
+            // vibrations
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center_horizontal"
+                android:text="@string/vibrate_settings_label"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/textViewInterval"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/vibe_intervals"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextInterval"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/vibe_intervals" />
+
+            <TextView
+                android:id="@+id/textViewCycle"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="@string/vibe_cycle"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextCycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="@string/vibe_cycle" />
+
+            <Button
+                android:id="@+id/apply_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/apply_settings"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/CompanyColor"/>
+
+            <Button
+                android:id="@+id/save_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="@string/save_settings"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/CompanyColor"/>
+
+        </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white">
+
+        <include
+            layout="@layout/main_nav_drawer"/>
+
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

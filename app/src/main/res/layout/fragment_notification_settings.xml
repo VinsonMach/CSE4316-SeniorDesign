@@ -15,16 +15,7 @@
         app:backgroundTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="372dp"
-        android:layout_height="48dp"
-        android:text="NOTIFICATION SETTINGS PAGE"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="58dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

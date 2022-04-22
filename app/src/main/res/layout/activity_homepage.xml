@@ -1,42 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home.HomepageActivity"
-    android:background="@color/CompanyColorPink">
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context=".home.HomepageActivity">
 
-    <Button
-        android:id="@+id/buttonSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="settings"
-        app:layout_constraintEnd_toStartOf="@+id/buttonHistory"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/buttonHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="history"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonSettings"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:name="vib.track.cerberus.history.HistoryList"
-        android:id="@+id/HomeFrame_FragView"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSettings"
-        android:background="@color/white"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <include
+            layout="@layout/main_toolbar"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/white">
+
+        <include layout="@layout/main_nav_drawer" />
+
+    </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

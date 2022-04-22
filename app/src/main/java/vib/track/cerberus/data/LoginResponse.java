@@ -4,28 +4,30 @@ import com.google.gson.annotations.SerializedName;
 
 public class LoginResponse {
     @SerializedName("code")
-    private int code;
-
-    @SerializedName("message")
-    private String message;
-
-    @SerializedName("userId")
-    private int userId;
+    private String code;
 
     @SerializedName("ringLogin")
     private boolean ringLogin;
 
+    @SerializedName("userName")
+    private String userName;
+
     public int getCode() {
+    @SerializedName("hashedPwd")
+    private String hashedpassword;
+
+    public String getCode() {
         return code;
     }
 
-    public String getMessage() {
-        return message;
-    }
+    public boolean getringLogin() { return ringLogin; }
 
     public int getUserId() {
         return userId;
     }
 
     public boolean isRefreshToken() { return ringLogin; }
+    public String getUserName() { return userName; }
+
+    public String getHashedpassword() { return hashedpassword; }
 }

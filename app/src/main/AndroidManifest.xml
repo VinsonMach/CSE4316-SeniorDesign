@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="vib.track.cerberus">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Cerberus"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:ignore="ExtraText">
+        // can add android:label="@string/...." above for toolbar labels
         <activity
             android:name=".ring_connect.auth_ring"
             android:exported="false" />
@@ -21,7 +24,18 @@
         <activity
             android:name=".home.HomepageActivity"
             android:exported="false"
-            android:label="@string/title_activity_homepage"
+            android:theme="@style/Theme.Cerberus.NoActionBar" />
+        <activity
+            android:name=".history.HistoryActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Cerberus.NoActionBar" />
+        <activity
+            android:name=".home.SecondFragment"
+            android:exported="false"
+            android:theme="@style/Theme.Cerberus.NoActionBar" />
+        <activity
+            android:name=".home.credits"
+            android:exported="false"
             android:theme="@style/Theme.Cerberus.NoActionBar" />
         <activity
             android:name=".ui.login_registration_activities.JoinActivity"
@@ -35,7 +49,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <service
             android:name=".notifications.MyFirebaseMessagingService"
             android:exported="false">
@@ -48,3 +61,4 @@
             android:resource="@drawable/notification" />
     </application>
 </manifest>
+

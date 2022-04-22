@@ -17,6 +17,7 @@ import vib.track.cerberus.data.RingLoginData;
 import vib.track.cerberus.data.RingLoginResponse;
 import vib.track.cerberus.data.RingNotifyData;
 import vib.track.cerberus.data.RingNotifyResponse;
+import vib.track.cerberus.data.SingleEvent;
 
 public interface ServiceApi {
     @POST("/user/login")
@@ -33,6 +34,9 @@ public interface ServiceApi {
 
     @POST("/ring/notify")
     Call<RingNotifyResponse> ringNotify(@Body RingNotifyData data);
+
+    @GET("/ring/event")
+    Call<SingleEvent> getData();
 
     @POST("/notif/token")
     Call<NotifTokenResponse> notifToken(@Body NotifTokenData data);

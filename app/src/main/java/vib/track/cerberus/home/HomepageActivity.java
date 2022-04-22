@@ -3,9 +3,11 @@ package vib.track.cerberus.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,13 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,44 +30,117 @@ import vib.track.cerberus.history.HistoryList;
 import vib.track.cerberus.network.RetrofitClient;
 import vib.track.cerberus.network.ServiceApi;
 import vib.track.cerberus.ring_connect.auth_ring;
+import vib.track.cerberus.history.HistoryActivity;
 
 public class HomepageActivity extends AppCompatActivity {
 
-    Button B_toHistory, B_toSettings;
     private ServiceApi service;
     SharedPreferences sharedPreferences;
+
+    DrawerLayout drawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        B_toHistory = findViewById(R.id.buttonHistory);
-        B_toSettings = findViewById(R.id.buttonSettings);
 
-        B_toHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new HistoryList());
-            }
-        });
-
-        B_toSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                replaceFragment(new SecondFragment());
-            }
-        });
+        // assign variables
+        drawerLayout = findViewById(R.id.drawer_layout);
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
         sharedPreferences = getSharedPreferences("CerberusPreferences", Context.MODE_PRIVATE);
 
         registerRing();
     }
-    private  void replaceFragment(Fragment fragment){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ftran = fm.beginTransaction();
-        ftran.replace(R.id.HomeFrame_FragView, fragment);
-        ftran.commit();
+
+    public void clickMenu(View view){
+        // open drawer
+        openDrawer(drawerLayout);
+    }
+
+    public static void openDrawer(DrawerLayout drawer) {
+        // open drawer layout
+        drawer.openDrawer(GravityCompat.START);
+    }
+
+    public void clickLogo(View view){
+        // close drawer
+        closeDrawer(drawerLayout);
+    }
+
+    public static void closeDrawer(DrawerLayout drawer) {
+        // close drawer layout
+        // check condition
+        if (drawer.isDrawerOpen(GravityCompat.START)){
+            // close drawer when drawer is open
+            drawer.closeDrawer(GravityCompat.START);
+        }
+    }
+
+    public void clickHistory(View view){
+        // recreate history activity
+        redirectActivity(this, HistoryActivity.class);
+    }
+
+    public void clickSettings(View view){
+        // redirect activity to Settings
+        redirectActivity(this,SecondFragment.class);
+    }
+
+    public void clickCredits(View view){
+        // close app
+        redirectActivity(this,credits.class);
+    }
+
+    public void clickLogout(View view){
+        // close app
+        logout(this);
+    }
+
+    public static void logout(Activity activity) {
+        // initialize alert dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        // set title
+        builder.setTitle("Logout");
+        // set message
+        builder.setMessage("Are you sure that you want to logout?");
+        // positive yes button
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // finish activity
+                activity.finishAffinity();
+                // exit app
+                System.exit(0);
+            }
+        });
+        // negative no button
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // dismiss dialog
+                dialogInterface.dismiss();
+            }
+        });
+        
+        // show dialog
+        builder.show();
+    }
+
+    public static void redirectActivity(Activity activity,Class aClass) {
+        // initialize intent
+        Intent intent = new Intent(activity, aClass);
+        // set flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        // start activity
+        activity.startActivity(intent);
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        // close drawer
+        closeDrawer(drawerLayout);
     }
 
     private void registerRing() {
@@ -100,6 +170,5 @@ public class HomepageActivity extends AppCompatActivity {
             editor.putBoolean("registeredRing", true);
             editor.commit();
         }
-
     }
 }

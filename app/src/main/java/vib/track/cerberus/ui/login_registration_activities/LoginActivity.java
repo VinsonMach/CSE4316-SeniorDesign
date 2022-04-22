@@ -23,9 +23,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import vib.track.cerberus.R;
 import vib.track.cerberus.data.NotifTokenData;
 import vib.track.cerberus.data.NotifTokenResponse;
+import at.favre.lib.crypto.bcrypt.BCrypt;
+import vib.track.cerberus.R;
 import vib.track.cerberus.home.HomepageActivity;
 import vib.track.cerberus.network.RetrofitClient;
 import vib.track.cerberus.network.ServiceApi;
@@ -129,8 +130,10 @@ public class LoginActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
+
             startLogin(new LoginData(email, password));
             showProgress(true);
+
         }
     }
 
@@ -138,6 +141,7 @@ public class LoginActivity extends AppCompatActivity {
         service.userLogin(data).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                String message;
                 LoginResponse result = response.body();
                 //Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
 
@@ -188,6 +192,33 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 showProgress(false);
+
+                //verifying password with hashed password
+                //user entered password
+                String password = data.getPassword();
+                //verifying hashed password
+                BCrypt.Result rightPwd = BCrypt.verifyer().verify(password.toCharArray(), result.getHashedpassword().toCharArray());
+
+                // REPLACE THIS WITH NEW RING TOKEN STUFF
+                Intent home = new Intent(LoginActivity.this, HomepageActivity.class);
+                //There's probably a better way to do this..... but it works
+                //rightPwd.verified == true when entered password equals hashed password
+                if(rightPwd.verified && !result.getCode().equals("404"))
+                {
+                    message = "Login success. " + result.getUserName() + " welcome!";
+                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+                    startActivity(home);
+                }
+                else if(!rightPwd.verified && !result.getCode().equals("404"))
+                {
+                    message = "Wrong password!";
+                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+                }
+                else
+                {
+                    message = "Error!";
+                    Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
@@ -212,6 +243,3 @@ public class LoginActivity extends AppCompatActivity {
         mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 }
-
-
-

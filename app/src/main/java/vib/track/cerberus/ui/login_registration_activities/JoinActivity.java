@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import at.favre.lib.crypto.bcrypt.BCrypt;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -94,7 +95,9 @@ public class JoinActivity extends AppCompatActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-            startJoin(new JoinData(name, email, password));
+            String hashedpassword = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+            startJoin(new JoinData(name, email, hashedpassword));
+            //startJoin(new JoinData(name, email, password));
             showProgress(true);
         }
     }

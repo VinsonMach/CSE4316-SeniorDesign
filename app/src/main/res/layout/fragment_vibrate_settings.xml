@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".settings_activities.vibrate_settings">
 
+    // BACK BUTTON
     <Button
         android:id="@+id/button_Back_Wrist"
         android:layout_width="372dp"
@@ -15,20 +16,12 @@
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="52dp"
-        android:text="Previous"
+        android:text="@string/previous"
         app:backgroundTint="@color/gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="372dp"
-        android:layout_height="50dp"
-        android:text="VIBRATION SETTINGS PAGE"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="58dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
