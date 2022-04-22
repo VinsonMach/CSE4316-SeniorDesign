@@ -18,7 +18,29 @@
         <include
             layout="@layout/main_toolbar"/>
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/cerberus_logo"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome to Cerberus!"
+            android:gravity="center_horizontal"
+            android:textSize="30dp"
+            android:padding="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A Vibrating Bluetooth Wristband by Team Vibetracked"
+            android:gravity="center_horizontal"
+            android:textSize="28dp"/>
+
     </LinearLayout>
+
 
     <RelativeLayout
         android:layout_width="300dp"

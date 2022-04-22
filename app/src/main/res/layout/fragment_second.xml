@@ -20,8 +20,6 @@
             <include
                 layout="@layout/main_toolbar" />
 
-            // app
-
             // notifications
 
             <TextView
@@ -49,6 +47,13 @@
                 android:textSize="30sp" />
 
             <TextView
+                android:id="@+id/textViewIntervalStatic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Current Vibration Interval:"
+                android:textSize="20sp" />
+
+            <TextView
                 android:id="@+id/textViewInterval"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -61,6 +66,13 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:hint="@string/vibe_intervals" />
+
+            <TextView
+                android:id="@+id/textViewCycleStatic"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Current Number of Vibration Cycles:"
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/textViewCycle"
