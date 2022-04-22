@@ -3,10 +3,12 @@ package vib.track.cerberus.home;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
@@ -26,6 +28,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vib.track.cerberus.R;
+import vib.track.cerberus.bluetooth.BluetoothHandler;
 import vib.track.cerberus.data.RingNotifyData;
 import vib.track.cerberus.data.RingNotifyResponse;
 import vib.track.cerberus.databinding.ActivityHomepageBinding;
@@ -40,13 +43,14 @@ public class HomepageActivity extends AppCompatActivity {
     private ServiceApi service;
     SharedPreferences sharedPreferences;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         B_toHistory = findViewById(R.id.buttonHistory);
         B_toSettings = findViewById(R.id.buttonSettings);
-
+        BluetoothHandler.init(this);
         B_toHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +67,7 @@ public class HomepageActivity extends AppCompatActivity {
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
         sharedPreferences = getSharedPreferences("CerberusPreferences", Context.MODE_PRIVATE);
-
+        BluetoothHandler.scan(this);
         registerRing();
     }
     private  void replaceFragment(Fragment fragment){

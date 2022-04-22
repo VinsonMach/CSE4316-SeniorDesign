@@ -23,6 +23,7 @@ import java.util.Map;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import vib.track.cerberus.bluetooth.BluetoothHandler;
 import vib.track.cerberus.data.NotifTokenData;
 import vib.track.cerberus.data.NotifTokenResponse;
 import vib.track.cerberus.data.RingAuthResponse;
@@ -43,7 +44,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         RemoteMessage.Notification notif = remoteMessage.getNotification();
         String title = notif.getTitle();
         String body = notif.getBody();
-
+        BluetoothHandler.write("10 5");
         Intent intent = new Intent(this, HomepageActivity.class); // Should this be HistoryList? want recent history
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
