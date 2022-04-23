@@ -17,29 +17,33 @@
             android:id="@+id/dataSensorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_gravity="left"
             android:text="id"
+            android:maxLength="18"
+            android:paddingHorizontal="20dp"
             android:textSize="16sp"
-            android:textColor="#000"/>
+            android:textColor="#000" />
 
         <TextView
             android:id="@+id/dataEventTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
+            android:layout_gravity="center"
             android:text="type"
             android:textSize="16sp"
-            android:textColor="#000"/>
+            android:textColor="#000"
+            android:paddingHorizontal="7dp"/>
 
         <TextView
             android:id="@+id/dataEventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="100dp"
+            android:layout_gravity="right"
             android:text="date"
-            android:textSize="12sp"
+            android:textSize="16sp"
             android:textColor="#444"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:paddingHorizontal="10dp"/>
 
     </LinearLayout>
 
