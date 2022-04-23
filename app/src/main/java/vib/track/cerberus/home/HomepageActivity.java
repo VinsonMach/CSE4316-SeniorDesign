@@ -8,7 +8,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-
+import android.os.Build;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
@@ -23,6 +25,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vib.track.cerberus.R;
+import vib.track.cerberus.bluetooth.BluetoothHandler;
 import vib.track.cerberus.data.RingNotifyData;
 import vib.track.cerberus.data.RingNotifyResponse;
 import vib.track.cerberus.databinding.ActivityHomepageBinding;
@@ -39,6 +42,8 @@ public class HomepageActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +51,11 @@ public class HomepageActivity extends AppCompatActivity {
 
         // assign variables
         drawerLayout = findViewById(R.id.drawer_layout);
+        BluetoothHandler.init(this);
 
         service = RetrofitClient.getClient().create(ServiceApi.class);
         sharedPreferences = getSharedPreferences("CerberusPreferences", Context.MODE_PRIVATE);
-
+        BluetoothHandler.scan(this);
         registerRing();
     }
 
