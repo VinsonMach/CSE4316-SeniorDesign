@@ -12,7 +12,9 @@ public class LoginResponse {
     @SerializedName("userName")
     private String userName;
 
-    public int getCode() {
+    @SerializedName("userId")
+    private int userId;
+
     @SerializedName("hashedPwd")
     private String hashedpassword;
 
@@ -27,6 +29,7 @@ public class LoginResponse {
     }
 
     public boolean isRefreshToken() { return ringLogin; }
+
     public String getUserName() { return userName; }
 
     public String getHashedpassword() { return hashedpassword; }
