@@ -27,7 +27,7 @@
                     android:id="@+id/join_email"
                     android:layout_width="match_parent"
                     android:layout_height="51dp"
-                    android:hint="Email"
+                    android:hint="   Email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />

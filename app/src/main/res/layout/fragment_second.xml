@@ -8,9 +8,13 @@
     android:fitsSystemWindows="true"
     tools:context=".home.SecondFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:id="@+id/headerView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:orientation="vertical"
@@ -47,19 +51,29 @@
                 android:text="@string/vibrate_settings_label"
                 android:textSize="30sp" />
 
-            <TextView
-                android:id="@+id/textViewIntervalStatic"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Current Vibration Interval:"
-                android:textSize="20sp" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/textViewInterval"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="@string/vibe_intervals"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textViewIntervalStatic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="Current Vibration Interval (ms): "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewInterval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/textViewIntervalStatic"
+                    android:gravity="center"
+                    android:text="@string/vibe_intervals"
+                    android:textSize="18sp"
+                    android:textAlignment="center"/>
+
+            </RelativeLayout>
 
             <EditText
                 android:id="@+id/editTextInterval"
@@ -68,19 +82,28 @@
                 android:inputType="number"
                 android:hint="@string/vibe_intervals" />
 
-            <TextView
-                android:id="@+id/textViewCycleStatic"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="Current Number of Vibration Cycles:"
-                android:textSize="20sp" />
+                android:layout_height="match_parent" >
 
-            <TextView
-                android:id="@+id/textViewCycle"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:text="@string/vibe_cycle"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/textViewCycleStatic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:text="Current Number of Vibration Cycles: "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewCycle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@id/textViewCycleStatic"
+                    android:gravity="center"
+                    android:text="@string/vibe_cycle"
+                    android:textAlignment="center"
+                    android:textSize="18sp" />
+            </RelativeLayout>
 
             <EditText
                 android:id="@+id/editTextCycle"
@@ -108,6 +131,7 @@
                 android:backgroundTint="@color/CompanyColor"/>
 
         </LinearLayout>
+    </ScrollView>
 
     <RelativeLayout
         android:layout_width="300dp"
