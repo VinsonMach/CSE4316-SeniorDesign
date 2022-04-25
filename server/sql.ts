@@ -76,12 +76,19 @@ app.post("/ring/auth", (req, res) => {
 	
 	var auth = req.body.authCode;
 	var userId = req.body.userId;
+	
+	console.log(email);
+	console.log(password);
+	console.log(auth);
+	console.log(userId);
+	
 	var resultCode = 404;
 	var message = 'Error!';
 
 	// TO DO: Future - be able to just pass in auth code and not email, pass again
 	haveCode(email, password, auth)
 	.then(token => {
+		console.log(token);
 		var sql = 'UPDATE Users SET RefreshToken = ?, RingEmail = ? WHERE UserID = ?;';
 		var params = [token, email, userId]
 		connection.query(sql, params, function (err, result) {
@@ -257,6 +264,7 @@ app.post('/user/login', function(req, res){
 		var resultCode = 404;
 		var message = 'Error!';
 		var ringLogin = false;
+		//var hashedPwd = result[0].UserPwd;
 
 		if (err) {
 			console.log(err);
@@ -285,7 +293,8 @@ app.post('/user/login', function(req, res){
 			'code': resultCode,
 			'userId': id,
 			'ringLogin': ringLogin,
-			'message': message
+			'message': message,
+			//'hashedPwd': hashedPwd
 		});
 	})
 });
@@ -302,7 +311,7 @@ async function getRefreshToken(id) {
 	
 	var results = await q(sql, params);
 	refreshToken = results[0].RefreshToken;
-	
+	console.log('refreshToken');
 	return refreshToken;
 }
 
@@ -468,7 +477,7 @@ async function getRingEvents(id) {
 						if (strSeconds.length < 2) {strSeconds = '0' + strSeconds;}
 						var strTime = strHours + ':' + strMinutes + ':' + strSeconds;
 						
-						var sql = 'INSERT INTO Event_history(SensorID, SensorName, EventType, EventDate, EventTime, UserID) VALUES(?, ?, ?, Date(?), Time(?), ?)'
+						var sql = 'INSERT INTO Event_history(SensorID, SensorName, EventType, EventDate, EventTime, UserID) VALUES(?, ?, ?, ?, ?, ?)'
 						var params = [device.zid, device.name, device.deviceType, strDate, strTime, id]
 						
 						// Send information to database
