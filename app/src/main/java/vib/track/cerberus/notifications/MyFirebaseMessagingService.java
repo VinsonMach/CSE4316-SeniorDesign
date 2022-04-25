@@ -1,36 +1,21 @@
 package vib.track.cerberus.notifications;
 
-import vib.track.cerberus.R;
-
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-import java.util.Map;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import vib.track.cerberus.R;
 import vib.track.cerberus.bluetooth.BluetoothHandler;
-import vib.track.cerberus.data.NotifTokenData;
-import vib.track.cerberus.data.NotifTokenResponse;
-import vib.track.cerberus.data.RingAuthResponse;
 import vib.track.cerberus.home.HomepageActivity;
-import vib.track.cerberus.network.RetrofitClient;
 import vib.track.cerberus.network.ServiceApi;
-import vib.track.cerberus.ring_connect.auth_ring;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private ServiceApi service;
@@ -38,6 +23,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        SharedPreferences sharedPreferences = getSharedPreferences("sharedPrefs", MODE_PRIVATE);
+        boolean muteNotifications = sharedPreferences.getBoolean("switch1", false);
+        if (muteNotifications)
+            return;
+
         Bundle bundle = new Bundle();
         bundle.putString("icon", "");
 
