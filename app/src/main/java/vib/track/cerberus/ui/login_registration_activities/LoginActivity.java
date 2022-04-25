@@ -23,19 +23,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 
-import vib.track.cerberus.data.NotifTokenData;
-import vib.track.cerberus.data.NotifTokenResponse;
 import at.favre.lib.crypto.bcrypt.BCrypt;
-import vib.track.cerberus.R;
-import vib.track.cerberus.home.HomepageActivity;
-import vib.track.cerberus.network.RetrofitClient;
-import vib.track.cerberus.network.ServiceApi;
-import vib.track.cerberus.data.LoginData;
-import vib.track.cerberus.data.LoginResponse;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import vib.track.cerberus.R;
+import vib.track.cerberus.data.LoginData;
+import vib.track.cerberus.data.LoginResponse;
+import vib.track.cerberus.data.NotifTokenData;
+import vib.track.cerberus.data.NotifTokenResponse;
+import vib.track.cerberus.home.HomepageActivity;
+import vib.track.cerberus.network.RetrofitClient;
+import vib.track.cerberus.network.ServiceApi;
 import vib.track.cerberus.ring_connect.login_ring;
 
 public class LoginActivity extends AppCompatActivity {
@@ -149,48 +148,6 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putInt("UserId", result.getUserId());
                 editor.commit();
 
-                if (result.isRefreshToken()) {
-                    Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
-                    startActivity(intent);
-
-                    // Get notification token and save to database
-
-                    FirebaseMessaging.getInstance().getToken()
-                            .addOnCompleteListener(new OnCompleteListener<String>() {
-                                @Override
-                                public void onComplete(@NonNull Task<String> task) {
-                                    if (!task.isSuccessful()) {
-                                        Log.w("NotifToken", "Fetching FCM registration token failed", task.getException());
-                                        return;
-                                    }
-                                    // Get new FCM registration token
-                                    String token = task.getResult();
-
-                                    NotifTokenData data = new NotifTokenData(result.getUserId(), token);
-                                    service.notifToken(data).enqueue(new Callback<NotifTokenResponse>() {
-                                        @Override
-                                        public void onResponse(Call<NotifTokenResponse> call, Response<NotifTokenResponse> response) {
-                                            NotifTokenResponse result = response.body();
-
-                                            if (result.getResultCode() == 200) {
-                                                Log.d("NotifTok", "Token 200 OK");
-                                            } else {
-                                                Log.w("NotifTok Error", "Non 200 Error");
-                                            }
-                                        }
-
-                                        @Override
-                                        public void onFailure(Call<NotifTokenResponse> call, Throwable t) {
-                                            Log.w("NotifTok Error", "Error loading notification token to db");
-                                        }
-                                    });
-                                }
-                            });
-                } else {
-                    Intent intent = new Intent(getApplicationContext(), login_ring.class);
-                    startActivity(intent);
-                }
-
                 showProgress(false);
 
                 //verifying password with hashed password
@@ -200,14 +157,56 @@ public class LoginActivity extends AppCompatActivity {
                 BCrypt.Result rightPwd = BCrypt.verifyer().verify(password.toCharArray(), result.getHashedpassword().toCharArray());
 
                 // REPLACE THIS WITH NEW RING TOKEN STUFF
-                Intent home = new Intent(LoginActivity.this, HomepageActivity.class);
+                //Intent home = new Intent(LoginActivity.this, HomepageActivity.class);
                 //There's probably a better way to do this..... but it works
                 //rightPwd.verified == true when entered password equals hashed password
                 if(rightPwd.verified && !result.getCode().equals("404"))
                 {
                     message = "Login success. " + result.getUserName() + " welcome!";
                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
-                    startActivity(home);
+
+                    if (result.isRefreshToken()) {
+                        // Get notification token and save to database
+
+                        FirebaseMessaging.getInstance().getToken()
+                                .addOnCompleteListener(new OnCompleteListener<String>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<String> task) {
+                                        if (!task.isSuccessful()) {
+                                            Log.w("NotifToken", "Fetching FCM registration token failed", task.getException());
+                                            return;
+                                        }
+                                        // Get new FCM registration token
+                                        String token = task.getResult();
+
+                                        NotifTokenData data = new NotifTokenData(result.getUserId(), token);
+                                        service.notifToken(data).enqueue(new Callback<NotifTokenResponse>() {
+                                            @Override
+                                            public void onResponse(Call<NotifTokenResponse> call, Response<NotifTokenResponse> response) {
+                                                NotifTokenResponse result = response.body();
+
+                                                if (result.getResultCode() == 200) {
+                                                    Log.d("NotifTok", "Token 200 OK");
+                                                } else {
+                                                    Log.w("NotifTok Error", "Non 200 Error");
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<NotifTokenResponse> call, Throwable t) {
+                                                Log.w("NotifTok Error", "Error loading notification token to db");
+                                            }
+                                        });
+                                    }
+                                });
+
+                            Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
+                            startActivity(intent);
+
+                    } else {
+                        Intent intent = new Intent(getApplicationContext(), login_ring.class);
+                        startActivity(intent);
+                    }
                 }
                 else if(!rightPwd.verified && !result.getCode().equals("404"))
                 {

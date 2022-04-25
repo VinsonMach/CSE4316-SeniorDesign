@@ -6,6 +6,9 @@ public class LoginResponse {
     @SerializedName("code")
     private String code;
 
+    @SerializedName("message")
+    private String message;
+
     @SerializedName("ringLogin")
     private boolean ringLogin;
 
@@ -31,6 +34,8 @@ public class LoginResponse {
     public boolean isRefreshToken() { return ringLogin; }
 
     public String getUserName() { return userName; }
+
+    public String getMessage() { return message; }
 
     public String getHashedpassword() { return hashedpassword; }
 }
