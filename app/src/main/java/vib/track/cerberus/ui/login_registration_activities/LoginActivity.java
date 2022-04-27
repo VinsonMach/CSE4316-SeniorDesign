@@ -143,11 +143,6 @@ public class LoginActivity extends AppCompatActivity {
                 String message;
                 LoginResponse result = response.body();
                 //Toast.makeText(LoginActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
-
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putInt("UserId", result.getUserId());
-                editor.commit();
-
                 showProgress(false);
 
                 //verifying password with hashed password
@@ -164,6 +159,10 @@ public class LoginActivity extends AppCompatActivity {
                 {
                     message = "Login success. " + result.getUserName() + " welcome!";
                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_LONG).show();
+
+                    SharedPreferences.Editor editor = sharedpreferences.edit();
+                    editor.putInt("UserId", result.getUserId());
+                    editor.commit();
 
                     if (result.isRefreshToken()) {
                         // Get notification token and save to database
