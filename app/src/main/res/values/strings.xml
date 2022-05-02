@@ -49,20 +49,17 @@
     <string name="logout_label">Logout</string>
 
     <string name="vibe_intervals">Enter Vibration Intervals (ms)</string>
-    <string name="current_intervals">Current Vibration Intervals</string>
+    <string name="current_intervals">Current Vibration Intervals: </string>
     <string name="vibe_cycle">Enter Vibration Cycles</string>
-    <string name="current_cycle">Current Vibration Cycles</string>
+    <string name="current_cycle">Current Vibration Cycles: </string>
     <string name="noti_mute">Mute Notifications</string>
     <string name="apply_settings">Apply Settings</string>
     <string name="save_settings">Save Settings</string>
 
-    <string-array name="vibrations">
-        <item>10 ms</item>
-        <item>20 ms</item>
-        <item>30 ms</item>
-        <item>40 ms</item>
-        <item>50 ms</item>
-    </string-array>
+    <string name="team">Team Vibetracked</string>
+    <string name="welcomeCerb">Welcome to Cerberus!</string>
+    <string name="description">A Vibrating Bluetooth Wristband</string>
+    <string name="createdBy">Created by Team Vibetracked</string>
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>
