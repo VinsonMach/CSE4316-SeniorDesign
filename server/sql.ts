@@ -113,9 +113,12 @@ app.post("/ring/auth", (req, res) => {
 	});
 });
 
-app.get('/ring/event', function(req, res) {
-	var sql = 'SELECT * FROM defaultdb.Event_history';
-	connection.query(sql, function (err, result) {
+app.post('/ring/event', function(req, res) {
+	var userId = req.body.userId;
+	console.log(`ring-event: ${userId}`);
+	var sql = 'SELECT * FROM defaultdb.Event_history WHERE UserID = ? ORDER BY EventID DESC';
+	var params = [userId];
+	connection.query(sql, params, function (err, result) {
 		var resultCode = 404;
 		var message = 'Error!';
 		if (err) {
@@ -123,10 +126,12 @@ app.get('/ring/event', function(req, res) {
 		} else {
 			resultCode = 200;
 			message = 'Success!';
-			var results_parsed = JSON.parse(JSON.stringify(result));
-			console.log(results_parsed);
-			return results_parsed;
 		}
+		res.json({
+			'statusCode': resultCode,
+			'message': message,
+			'body': result
+		});
 	});
 
 });
@@ -264,29 +269,18 @@ app.post('/user/login', function(req, res){
 		var resultCode = 404;
 		var message = 'Error!';
 		var ringLogin = false;
-		//var hashedPwd = result[0].UserPwd;
+		var hashedPwd = result[0].UserPwd;
+		var id = -1;
 
 		if (err) {
 			console.log(err);
 		} else {
-			if (result.length === 0) {
-				resultCode = 204;
-				message = 'ID not found!';
-			} else if (userPwd !== result[0].UserPwd) {
-				resultCode = 204;
-				message = 'Wrong password!';
-			} else {
-				resultCode = 200;
-				message = 'Login success. ' + result[0].UserName + ' welcome!';
-				if (result[0].RefreshToken != null) {
-					ringLogin = true;
-				}
-			}
-		}
-
-		var id = -1;
-		if (resultCode != 204) {
+			resultCode = 200;
+			message = 'Login success. ' + result[0].UserName + ' welcome!';
 			id = result[0].UserID; 
+			if (result[0].RefreshToken != null) {
+				ringLogin = true;
+			}
 		}
 
 		res.json({
@@ -294,7 +288,8 @@ app.post('/user/login', function(req, res){
 			'userId': id,
 			'ringLogin': ringLogin,
 			'message': message,
-			//'hashedPwd': hashedPwd
+			'hashedPwd': hashedPwd,
+			'userName': result[0].UserName 
 		});
 	})
 });
