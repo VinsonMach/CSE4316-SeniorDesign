@@ -1,5 +1,7 @@
 package vib.track.cerberus.history;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,10 +12,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vib.track.cerberus.R;
+import vib.track.cerberus.data.HistoryCallData;
 import vib.track.cerberus.data.HistoryData;
 import vib.track.cerberus.data.SingleEvent;
 import vib.track.cerberus.home.HomepageActivity;
@@ -37,6 +36,7 @@ public class HistoryActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     RecyclerAdapter recyclerAdapter;
     DrawerLayout drawerLayout;
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +58,21 @@ public class HistoryActivity extends AppCompatActivity {
 
         ServiceApi serviceApi = RetrofitClient.getClient().create(ServiceApi.class);
 
-        Call<SingleEvent> call = serviceApi.getData();
-
-        call.enqueue(new Callback<SingleEvent>() {
+        sharedpreferences = getSharedPreferences("CerberusPreferences", Context.MODE_PRIVATE);
+        int userId = sharedpreferences.getInt("UserId", 0);
+        HistoryCallData data = new HistoryCallData(userId);
+        serviceApi.getData(data).enqueue(new Callback<SingleEvent>() {
             @Override
             public void onResponse(Call<SingleEvent> call, Response<SingleEvent> response) {
-
                 dataList = response.body();
 
-                Log.d("MainActivity", dataList.toString());
+                if (dataList != null) {
+                    Log.d("MainActivity", dataList.toString());
 
-                historyDataInfo = dataList.body;
+                    historyDataInfo = dataList.body;
+                } else {
+                    historyDataInfo = new ArrayList<>();
+                }
 
                 recyclerAdapter = new RecyclerAdapter(getApplicationContext(), historyDataInfo);
                 recyclerView.setAdapter(recyclerAdapter);

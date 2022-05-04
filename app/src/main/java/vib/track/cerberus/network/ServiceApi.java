@@ -1,14 +1,13 @@
 package vib.track.cerberus.network;
 
-import retrofit2.http.GET;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.POST;
+import vib.track.cerberus.data.HistoryCallData;
 import vib.track.cerberus.data.JoinData;
 import vib.track.cerberus.data.JoinResponse;
 import vib.track.cerberus.data.LoginData;
 import vib.track.cerberus.data.LoginResponse;
-
-import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.POST;
 import vib.track.cerberus.data.NotifTokenData;
 import vib.track.cerberus.data.NotifTokenResponse;
 import vib.track.cerberus.data.RingAuthData;
@@ -35,8 +34,8 @@ public interface ServiceApi {
     @POST("/ring/notify")
     Call<RingNotifyResponse> ringNotify(@Body RingNotifyData data);
 
-    @GET("/ring/event")
-    Call<SingleEvent> getData();
+    @POST("/ring/event")
+    Call<SingleEvent> getData(@Body HistoryCallData data);
 
     @POST("/notif/token")
     Call<NotifTokenResponse> notifToken(@Body NotifTokenData data);

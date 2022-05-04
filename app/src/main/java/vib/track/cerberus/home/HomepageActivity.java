@@ -1,23 +1,19 @@
 package vib.track.cerberus.home;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
+import android.content.SharedPreferences;
 import android.os.Build;
-import com.google.android.material.snackbar.Snackbar;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -28,12 +24,9 @@ import vib.track.cerberus.R;
 import vib.track.cerberus.bluetooth.BluetoothHandler;
 import vib.track.cerberus.data.RingNotifyData;
 import vib.track.cerberus.data.RingNotifyResponse;
-import vib.track.cerberus.databinding.ActivityHomepageBinding;
-import vib.track.cerberus.history.HistoryList;
+import vib.track.cerberus.history.HistoryActivity;
 import vib.track.cerberus.network.RetrofitClient;
 import vib.track.cerberus.network.ServiceApi;
-import vib.track.cerberus.ring_connect.auth_ring;
-import vib.track.cerberus.history.HistoryActivity;
 
 public class HomepageActivity extends AppCompatActivity {
 
@@ -114,6 +107,10 @@ public class HomepageActivity extends AppCompatActivity {
         builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                SharedPreferences shP = activity.getSharedPreferences("CerberusPreferences", Context.MODE_PRIVATE);
+                shP.edit().clear().commit();
+                SharedPreferences sharedP = activity.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE);
+                sharedP.edit().clear().commit();
                 // finish activity
                 activity.finishAffinity();
                 // exit app

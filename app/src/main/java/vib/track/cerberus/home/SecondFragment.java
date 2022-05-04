@@ -4,10 +4,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,12 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-
 import vib.track.cerberus.R;
 import vib.track.cerberus.history.HistoryActivity;
-import vib.track.cerberus.home.HomepageActivity;
-import vib.track.cerberus.home.credits;
-import vib.track.cerberus.history.HistoryList;
 
 public class SecondFragment extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -35,7 +29,7 @@ public class SecondFragment extends AppCompatActivity implements AdapterView.OnI
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String TEXTINTERVAL = "textInterval";
     public static final String TEXTCYCLE = "textCycle";
-    public static final String SWITCH1 = "swtich1";
+    public static final String SWITCH1 = "switch1";
 
     private Button applySettingsButton;
     private Button saveButton;
