@@ -164,44 +164,43 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putInt("UserId", result.getUserId());
                     editor.commit();
 
-                    if (result.isRefreshToken()) {
-                        // Get notification token and save to database
+                    // Get notification token and save to database
 
-                        FirebaseMessaging.getInstance().getToken()
-                                .addOnCompleteListener(new OnCompleteListener<String>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<String> task) {
-                                        if (!task.isSuccessful()) {
-                                            Log.w("NotifToken", "Fetching FCM registration token failed", task.getException());
-                                            return;
-                                        }
-                                        // Get new FCM registration token
-                                        String token = task.getResult();
-
-                                        NotifTokenData data = new NotifTokenData(result.getUserId(), token);
-                                        service.notifToken(data).enqueue(new Callback<NotifTokenResponse>() {
-                                            @Override
-                                            public void onResponse(Call<NotifTokenResponse> call, Response<NotifTokenResponse> response) {
-                                                NotifTokenResponse result = response.body();
-
-                                                if (result.getResultCode() == 200) {
-                                                    Log.d("NotifTok", "Token 200 OK");
-                                                } else {
-                                                    Log.w("NotifTok Error", "Non 200 Error");
-                                                }
-                                            }
-
-                                            @Override
-                                            public void onFailure(Call<NotifTokenResponse> call, Throwable t) {
-                                                Log.w("NotifTok Error", "Error loading notification token to db");
-                                            }
-                                        });
+                    FirebaseMessaging.getInstance().getToken()
+                            .addOnCompleteListener(new OnCompleteListener<String>() {
+                                @Override
+                                public void onComplete(@NonNull Task<String> task) {
+                                    if (!task.isSuccessful()) {
+                                        Log.w("NotifToken", "Fetching FCM registration token failed", task.getException());
+                                        return;
                                     }
-                                });
+                                    // Get new FCM registration token
+                                    String token = task.getResult();
 
-                            Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
-                            startActivity(intent);
+                                    NotifTokenData data = new NotifTokenData(result.getUserId(), token);
+                                    service.notifToken(data).enqueue(new Callback<NotifTokenResponse>() {
+                                        @Override
+                                        public void onResponse(Call<NotifTokenResponse> call, Response<NotifTokenResponse> response) {
+                                            NotifTokenResponse result = response.body();
 
+                                            if (result.getResultCode() == 200) {
+                                                Log.d("NotifTok", "Token 200 OK");
+                                            } else {
+                                                Log.w("NotifTok Error", "Non 200 Error");
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<NotifTokenResponse> call, Throwable t) {
+                                            Log.w("NotifTok Error", "Error loading notification token to db");
+                                        }
+                                    });
+                                }
+                            });
+
+                    if (result.isRefreshToken()) {
+                        Intent intent = new Intent(getApplicationContext(), HomepageActivity.class);
+                        startActivity(intent);
                     } else {
                         Intent intent = new Intent(getApplicationContext(), login_ring.class);
                         startActivity(intent);
