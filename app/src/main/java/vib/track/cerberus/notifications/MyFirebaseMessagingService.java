@@ -34,7 +34,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         RemoteMessage.Notification notif = remoteMessage.getNotification();
         String title = notif.getTitle();
         String body = notif.getBody();
-        BluetoothHandler.write("10 5");
+
+        String interval = sharedPreferences.getString("textInterval", "50");
+        String cycle = sharedPreferences.getString("textCycle", "5");
+        String connector = " ";
+        String intervalConnect = interval + connector;
+        String bleWrite = intervalConnect + cycle;
+        //BluetoothHandler.write("50 5");
+        BluetoothHandler.write(bleWrite);
+
         Intent intent = new Intent(this, HomepageActivity.class); // Should this be HistoryList? want recent history
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
